@@ -8,7 +8,7 @@ You will also find a minimal Python API to control the robot with a follow line 
 
 1. Burn a raspian lite IMG
 2. Setup ssh and WiFi (can be done directly on the boot partition)
-3. Setup hostname
+3. Setup hostname to "rosa" (used by Scratch and video stream)
 4. Enable camera (via raspi-config)
 5. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
 6. Install pip for python3
