@@ -35,7 +35,7 @@ def set_speed(motor, speed):
 
     in1, in2, pwm = get_motor_pins(motor)
 
-    if speed > 0:
+    if speed < 0:
         in1.off()
         in2.on()
     else:

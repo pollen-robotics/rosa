@@ -44,11 +44,11 @@ def handle_commands(cmd):
 
         if 'left' in wheels:
             left_speed = wheels['left']
-            controller.set_speed('a', left_speed)
+            controller.set_speed('b', left_speed)
 
         if 'right' in wheels:
             right_speed = wheels['right']
-            controller.set_speed('b', right_speed)
+            controller.set_speed('a', right_speed)
 
 
 start_server = websockets.serve(scratchext, '0.0.0.0', 1234)
