@@ -2,8 +2,17 @@ import json
 import asyncio
 import websockets
 
+import motors_controller as controller
+
 FREQ = 25
 PERIOD = 1.0 / FREQ
+
+
+controller.setup(
+    AIN1=4, AIN2=3, PWMA=2,
+    BIN1=15, BIN2=18, PWMB=17,
+    STBY=14
+)
 
 
 @asyncio.coroutine
@@ -35,11 +44,11 @@ def handle_commands(cmd):
 
         if 'left' in wheels:
             left_speed = wheels['left']
-            print('Set left wheel speed to {}'.format(left_speed))
+            controller.set_speed('a', left_speed)
 
         if 'right' in wheels:
             right_speed = wheels['right']
-            print('Set right wheel speed to {}'.format(right_speed))
+            controller.set_speed('b', right_speed)
 
 
 start_server = websockets.serve(scratchext, '0.0.0.0', 1234)
