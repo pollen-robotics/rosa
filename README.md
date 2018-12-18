@@ -16,7 +16,12 @@ You will also find a minimal Python API to control the robot with a follow line 
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
 ```
-7. Install opencv for python 3
+7. Install numpy
+```
+sudo apt install libatlas3-base
+sudo pip3 install numpy
+```
+8. Install opencv for python 3
 ```
 wget https://github.com/opencv/opencv/archive/3.4.3.tar.gz
 tar xvfz 3.4.3.tar.gz
@@ -29,21 +34,21 @@ make -j4
 sudo make install
 sudo ldconfig
 ```
-8. Install GPIO support for python
+9. Install GPIO support for python
 ```
 sudo apt install python3-gpiozero
 ```
-9. Install python dependencies
+10. Install python dependencies
 ```
 sudo pip install websockets ipython
 ```
-10. Download and install scripts
+11. Download and install scripts
 ```
 wget https://github.com/pollen-robotics/rosa/archive/rpi.zip
 unzip rpi.zip
 cd rosa-rpi/rpi
 ```
-11. Launch video stream as service (run from rpi folder)
+12. Launch video stream as service (run from rpi folder)
 ```
 sudo tee /etc/systemd/system/videostream.service > /dev/null <<EOF
 [Unit]
@@ -62,7 +67,7 @@ WantedBy=multi-user.target
 EOF
 sudo systemctl enable videostream.service
 ```
-12. Launch rosa to scratch as service (run from rpi folder)
+13. Launch rosa to scratch as service (run from rpi folder)
 ```
 sudo tee /etc/systemd/system/rosa2scratch.service > /dev/null <<EOF
 [Unit]
@@ -81,4 +86,4 @@ WantedBy=multi-user.target
 EOF
 sudo systemctl enable rosa2scratch.service
 ```
-13. Reboot
+14. Reboot
