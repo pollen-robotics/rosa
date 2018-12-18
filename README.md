@@ -10,8 +10,9 @@ You will also find a minimal Python API to control the robot with a follow line 
 2. Setup ssh and WiFi (can be done directly on the boot partition)
 3. Setup hostname to "rosa" (used by Scratch and video stream)
 4. Enable camera (via raspi-config)
-5. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
-6. Install pip for python3
+5. Update distrib ```sudo apt update```
+6. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
+7. Install pip for python3
 ```
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
@@ -19,18 +20,20 @@ sudo python3 get-pip.py
 7. Install numpy
 ```
 sudo apt install libatlas3-base
-sudo pip3 install numpy
+sudo pip3 install numpy -i https://www.piwheels.org/simple
 ```
 8. Install opencv for python 3
 ```
 wget https://github.com/opencv/opencv/archive/3.4.3.tar.gz
 tar xvfz 3.4.3.tar.gz
 cd opencv-3.4.3
-sudo apt install build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libatlas-base-dev gfortran python3-dev python3-numpy
+sudo apt install build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libatlas-base-dev gfortran python3-dev
 mkdir build
 cd build
-cmake ..
+cmake -D BUILD_EXAMPLES=OFF -D BUILD_DOCS=OFF -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF ..
+Edit swap size in /etc/dphys-swapfile (CONF_SWAPSIZE=1024) & sudo /etc/init.d/dphys-swapfile restart
 make -j4
+Restore swap size in /etc/dphys-swapfile (CONF_SWAPSIZE=100) & sudo /etc/init.d/dphys-swapfile restart
 sudo make install
 sudo ldconfig
 ```
@@ -40,7 +43,9 @@ sudo apt install python3-gpiozero
 ```
 10. Install python dependencies
 ```
-sudo pip install websockets ipython
+sudo apt install git
+sudo pip3 install git+https://github.com/dpallot/simple-websocket-server.git
+sudo pip3 install ipython
 ```
 11. Download and install scripts
 ```
