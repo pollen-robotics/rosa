@@ -8,7 +8,7 @@ You will also find a minimal Python API to control the robot with a follow line 
 
 1. Burn a raspian lite IMG
 2. Setup ssh and WiFi (can be done directly on the boot partition)
-3. Setup hostname to "rosa" (used by Scratch and video stream)
+3. Setup hostname to "rosa"
 4. Enable camera (via raspi-config)
 5. Update distrib ```sudo apt update```
 6. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
@@ -45,7 +45,7 @@ sudo apt install python3-gpiozero
 ```
 sudo apt install git
 sudo pip3 install git+https://github.com/dpallot/simple-websocket-server.git
-sudo pip3 install ipython
+sudo pip3 install ipython Pillow websocket-client
 ```
 11. Download and install scripts
 ```
@@ -63,7 +63,7 @@ After=network.target network-online.target
 [Service]
 PIDFile=/var/run/videostream.pid
 Environment="PATH=$PATH"
-ExecStart=/usr/bin/python3 "$PWD/streamcam.py"
+ExecStart=/usr/bin/python3 "$PWD/streamjpeg.py"
 User=pi
 Group=pi
 Type=simple
@@ -72,23 +72,5 @@ WantedBy=multi-user.target
 EOF
 sudo systemctl enable videostream.service
 ```
-13. Launch rosa to scratch as service (run from rpi folder)
-```
-sudo tee /etc/systemd/system/rosa2scratch.service > /dev/null <<EOF
-[Unit]
-Description=Rosa 2 Scratch ext. manager
-Wants=network-online.target
-After=network.target network-online.target
-[Service]
-PIDFile=/var/run/rosa2scratch.pid
-Environment="PATH=$PATH"
-ExecStart=/usr/bin/python3 "$PWD/rosa.py"
-User=pi
-Group=pi
-Type=simple
-[Install]
-WantedBy=multi-user.target
-EOF
-sudo systemctl enable rosa2scratch.service
-```
+13. **TODO** add remote motor controller server as service
 14. Reboot
