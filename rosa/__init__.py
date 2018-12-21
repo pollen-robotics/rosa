@@ -1,1 +1,0 @@
-from rosa import Rosa
