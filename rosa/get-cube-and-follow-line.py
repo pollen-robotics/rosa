@@ -2,12 +2,12 @@ import cv2 as cv
 import numpy as np
 
 from PIL import Image
-from yolo import YOLO
 
 from remote_capture import RemoteCapture
 from remote_controller import RemoteController
 from follow_utils import look_and_follow
 from vision import get_black_line_center
+from vision.yolo import YOLO
 
 
 def get_obj_center(yolo, yolo_res, looked_classes):

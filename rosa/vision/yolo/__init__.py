@@ -1,1 +1,1 @@
-from yolo import YOLO # noqa F401
+from .yolo import YOLO # noqa F401
