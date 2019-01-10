@@ -2,12 +2,20 @@ import cv2 as cv
 import numpy as np
 
 from PIL import Image
+from keras.utils import get_file
 
 from remote_capture import RemoteCapture
 from remote_controller import RemoteController
 from follow_utils import look_and_follow
 from vision import get_black_line_center
 from vision.yolo import YOLO
+
+
+WEIGHTS = {
+    'name': 'rosa-yolo-res256x320.h5',
+    'origin': 'https://github.com/pollen-robotics/rosa/releases/download/0.1/rosa-yolo-res256x320.h5',
+    'hash': 'fa9a254e4c00420430dd13d5a2eedda4068d71e6f44be475fa20120e6c62c90e',
+}
 
 
 def get_obj_center(yolo, yolo_res, looked_classes):
@@ -44,8 +52,15 @@ if __name__ == '__main__':
         STBY=23
     )
 
+    model_path = get_file(
+        fname=WEIGHTS['name'],
+        origin=WEIGHTS['origin'],
+        cache_subdir='rosa',
+        file_hash=WEIGHTS['hash']
+    )
+
     yolo = YOLO(
-        model_path='./vision/yolo_trained.h5',
+        model_path=model_path,
         anchors_path='./vision/yolo/tiny_yolo_anchors.txt',
         classes_path='./vision/yolo/classes.txt',
         model_image_size=(256, 320),
