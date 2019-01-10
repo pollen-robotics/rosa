@@ -90,6 +90,11 @@ if __name__ == '__main__':
                 band_width_ratio=1.0
             )
             look_and_follow(controller, center, look_speed=0.15, asserv_p=0.4)
+            if center is not None:
+                h, w, _ = img.shape
+                x = int((center[0] + 1.0) * 0.5 * w)
+                y = int((center[1] + 1.0) * 0.5 * h)
+                cv.circle(img, (x, y), 10, (0, 0, 255), -1)
             cv.imshow('Demo', cv.cvtColor(img, cv.COLOR_BGR2RGB))
 
         cv.waitKey(1)

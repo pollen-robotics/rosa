@@ -9,7 +9,7 @@ def get_black_line_center(img,
     y1, y2 = (band_center_y - band_height // 2,
               band_center_y + band_height // 2)
 
-    height, width = img.shape
+    height, width, _ = img.shape
     band_width = int(width * band_width_ratio)
     x1 = (width - band_width) // 2
     x2 = width - x1
