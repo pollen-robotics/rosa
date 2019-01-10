@@ -45,7 +45,7 @@ if __name__ == '__main__':
     )
 
     yolo = YOLO(
-        model_path='./vision/yolo/trained_model.h5',
+        model_path='./vision/yolo_trained.h5',
         anchors_path='./vision/yolo/tiny_yolo_anchors.txt',
         classes_path='./vision/yolo/classes.txt',
         model_image_size=(256, 320),

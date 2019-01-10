@@ -123,7 +123,11 @@ class YOLO(object):
 
         out_boxes, out_scores, out_classes = self.remove_duplicate_boxes(out_boxes, out_scores, out_classes)
 
-        font = ImageFont.truetype(font='font/FiraMono-Medium.otf',
+        font_path = os.path.join(
+            os.path.dirname(__file__),
+            'font/FiraMono-Medium.otf'
+        )
+        font = ImageFont.truetype(font=font_path,
                                   size=np.floor(3e-2 * image.size[1] + 0.5).astype('int32'))
         thickness = 5
 
