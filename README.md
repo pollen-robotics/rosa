@@ -1,76 +1,67 @@
-# Rosa
+# Le projet Rosa : un robot ramasseur d'objets
 
-This repository contains the RPI code for the robot.
+Le robot Rosa a été conçu dans le cadre d'une mission [Poppy station](https://www.poppystation.org) effectuée par [Pollen-Robotics](https://www.pollen-robotics.com) et visant à concevoir un robot capable de se déplacer dans l'environnement, de détecter et reconnaître des objets et de les transporter. Il peut être programmé depuis un ordinateur ou une tablette en Python ou Scratch 3.
 
-You will also find a minimal Python API to control the robot with a follow line example.
+Ce projet est entièrement open-source et s'appuie sur des composants Makers et DIY. Il a été conçu pour être facilement assemblable et personalisable. Il vise à être construit et distribué par les réseaux de distribution de la ligue pour l'Enseignement.
 
-## Installation on RPI
+**TODO: video**
 
-1. Burn a raspian lite IMG
-2. Setup ssh and WiFi (can be done directly on the boot partition)
-3. Setup hostname to "rosa"
-4. Enable camera (via raspi-config)
-5. Update distrib ```sudo apt update```
-6. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
-7. Install pip for python3
+## Guide de démarrage
+
+### Les différents modèles 3D et composants
+### Assemblage
+
+### Préparer la carte SD
+
+Le logiciel embarqué du robot est disponible sous forme ISO prête à flasher sur une carte SD (8Go minimum). Cette ISO est disponible ici : [TODO](TODO). Ce logiciel est responsable de piloter les moteurs en fonction des commandes reçues ainsi que d'envoyer les informations des différents capteurs.
+
+Pour plus d'information pour écrire cette image est, par exemple, accessible sur le site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
+
+Une fois la carte écrite avec l'image téléchargée, elle peut être insérée dans la carte Raspberry Pi de Rosa.
+
+Afin de simplifier la première connexion au réseau WiFi, il est possible de le paramétrer directement sur la carte SD que l'on vient d'écrire. Il peut donc être plus pratique de réaliser cette étape avant d'insérer dans le robot (voir section [Connecter au réseau WiFi](#wifi) pour plus d'informations).
+
+### Alimentation
+
+### Connecter Rosa au réseau
+
+Afin de pouvoir programmer le robot, il est nécessaire de le connecter au même réseau que son ordinateur ou sa tablette. Il peut se connecter au WiFi ou en Ethernet via USB.
+
+#### WiFi
+
+La carte Raspberry-Pi utilisée par le robot permet de se connecter à un réseau WiFi. Il est donc possible de la configurer comme n'importe quelle carte Raspberry-Pi.
+
+Si vous avez facilement accès à la carte, il est possible de brancher un clavier (en USB) et un écran (en HDMI) sur la carte et d'utiliser l'interface graphique de Raspberry-Pi pour configurer un réseau WiFi. Ce réseau sera conservé et le robot utilisera automatiquement ce réseau.
+
+Il est également possible de venir rajouter un fichier spécial directement sur la partition BOOT de la carte SD. Par exemple, si on souhaite se connecter automatiquement au réseau WiFI "mon-reseau-wifi" avec comme mot de passe "password" il faut ajouter le fichier wpa_supplicant.conf suivant :
+
 ```
-wget https://bootstrap.pypa.io/get-pip.py
-sudo python3 get-pip.py
+country=fr
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
+
+network={
+    ssid="mon-reseau-wifi"
+    psk="password"
+}
 ```
-7. Install numpy
-```
-sudo apt install libatlas3-base
-sudo pip3 install numpy -i https://www.piwheels.org/simple
-```
-8. Install opencv for python 3
-```
-wget https://github.com/opencv/opencv/archive/3.4.3.tar.gz
-tar xvfz 3.4.3.tar.gz
-cd opencv-3.4.3
-sudo apt install build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libatlas-base-dev gfortran python3-dev
-mkdir build
-cd build
-cmake -D BUILD_EXAMPLES=OFF -D BUILD_DOCS=OFF -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF ..
-Edit swap size in /etc/dphys-swapfile (CONF_SWAPSIZE=1024) & sudo /etc/init.d/dphys-swapfile restart
-make -j4
-Restore swap size in /etc/dphys-swapfile (CONF_SWAPSIZE=100) & sudo /etc/init.d/dphys-swapfile restart
-sudo make install
-sudo ldconfig
-```
-9. Install GPIO support for python
-```
-sudo apt install python3-gpiozero
-```
-10. Install python dependencies
-```
-sudo apt install git
-sudo pip3 install git+https://github.com/dpallot/simple-websocket-server.git
-sudo pip3 install ipython Pillow websocket-client
-```
-11. Download and install scripts
-```
-wget https://github.com/pollen-robotics/rosa/archive/rpi.zip
-unzip rpi.zip
-cd rosa-rpi/rpi
-```
-12. Launch video stream as service (run from rpi folder)
-```
-sudo tee /etc/systemd/system/videostream.service > /dev/null <<EOF
-[Unit]
-Description=Video Stream to WS
-Wants=network-online.target
-After=network.target network-online.target
-[Service]
-PIDFile=/var/run/videostream.pid
-Environment="PATH=$PATH"
-ExecStart=/usr/bin/python3 "$PWD/streamjpeg.py"
-User=pi
-Group=pi
-Type=simple
-[Install]
-WantedBy=multi-user.target
-EOF
-sudo systemctl enable videostream.service
-```
-13. **TODO** add remote motor controller server as service
-14. Reboot
+
+Plus d'informations sur comment connecter une Raspberry-Pi à un réseau WiFi est disponible [sur le site de Raspberry-Pi](https://www.raspberrypi.org/documentation/configuration/wireless/).
+
+#### Ethernet via USB
+
+Il est également possible de connecter le robot au réseau via un cable en utilisant un adaptateur USB-Ethernet et en utilisant le port USB accessible à l'arrière du robot.
+
+La détection du réseau est alors automatique.
+
+## Capacités et caractéristiques
+
+### Navigation
+### Détection d'obstacles
+### Suivi de ligne
+### Détection et reconnaissance d'objet
+
+## Utilisation
+
+### Python
+### Scratch 3
