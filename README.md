@@ -1,6 +1,6 @@
 # Le projet Rosa : un robot ramasseur d'objets
 
-Le robot Rosa a été conçu dans le cadre d'une mission [Poppy station](https://www.poppystation.org) effectuée par [Pollen-Robotics](https://www.pollen-robotics.com) et visant à concevoir un robot capable de se déplacer dans l'environnement, de détecter et reconnaître des objets et de les transporter. Il peut être programmé depuis un ordinateur ou une tablette en Python ou Scratch 3.
+Le robot Rosa a été conçu dans le cadre d'une mission de [Poppy station](https://www.poppystation.org) effectuée par [Pollen-Robotics](https://www.pollen-robotics.com) et visant à concevoir un robot pour l'éducation capable de se déplacer dans l'environnement, de détecter et reconnaître des objets et de les transporter. Il peut être programmé depuis un ordinateur ou une tablette en Python ou Scratch 3.
 
 Ce projet est entièrement open-source et s'appuie sur des composants Makers et DIY. Il a été conçu pour être facilement assemblable et personalisable. Il vise à être construit et distribué par les réseaux de distribution de la ligue pour l'Enseignement.
 
@@ -13,7 +13,7 @@ Ce projet est entièrement open-source et s'appuie sur des composants Makers et 
 
 ### Préparer la carte SD
 
-Le logiciel embarqué du robot est disponible sous forme ISO prête à flasher sur une carte SD (8Go minimum). Cette ISO est disponible ici : [TODO](TODO). Ce logiciel est responsable de piloter les moteurs en fonction des commandes reçues ainsi que d'envoyer les informations des différents capteurs.
+Le logiciel embarqué du robot est disponible sous forme ISO prête à flasher sur une carte SD (8Go minimum). Cette ISO est disponible [ici](TODO). Ce logiciel est responsable de piloter les moteurs en fonction des commandes reçues ainsi que d'envoyer les informations des différents capteurs.
 
 Pour plus d'information pour écrire cette image est, par exemple, accessible sur le site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
 
@@ -56,10 +56,37 @@ La détection du réseau est alors automatique.
 
 ## Capacités et caractéristiques
 
+Le robot a été conçu pour pouvoir être utilisé dans différentes activités et dans des contextes variés. Les différentes capacités et caractéristiques du robot sont présentées ci-dessous.
+
 ### Navigation
+
+Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent tourner vers l'avant, vers l'arrière et s'arrêter. Le robot est donc capable de se déplacer dans un plan et de tourner sur lui même. La vitesse de déplacement du robot est réglable (**TODO: fourchette**).
+
 ### Détection d'obstacles
+
+Le robot possède plusieurs capteurs de distance (utilisant un émetteur/récepteur infra-rouge). Ces capteurs sont situés à l'avant du robot (avant gauche et avant droite) ainsi que sous le robot (dessous gauche et dessous droite).
+
+Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de **TODO: fourchette**.
+
+Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un bord de table. Ils peuvent également servir à détecter une ligne noire si elle est suffisament large (~ la largeur du robot).
+
 ### Suivi de ligne
+
+Le robot peut également suivre une ligne noire. La caméra est utilisée pour la détecter et identifier sa position verticale à une distance du robot donnée.
+
+**TODO: vidéo et images**
+
 ### Détection et reconnaissance d'objet
+
+Le robot peut également détecter et reconnaître certains objets placés devant lui. Cette capacité permet la création d'activités autour de la collecte, du convoyage et du tri d'objets.
+
+Les objets de couleur reconnus par le robot sont un cube, une étoile et une boule. Le modèle 3D de ces objets est disponible [ici](**TODO**) et ils sont facilement imprimables sur une imprimante 3D du commerce.
+
+La caméra du robot est utilisée pour reconnaître et détecter ses objets. Le robot renvoie une liste de l'ensemble des objets présents à l'image (il n'y a pas de limite maximale) avec pour chacun des objets son type (cube, étoile ou boule) et sa position dans l'image (la boite englobante).
+
+**TODO: video + image**
+
+*Note: il est possible, bien que plus compliqué, d'entrainer le robot à reconnaître de nouveaux objets si l'on souhaite.*
 
 ## Utilisation
 
