@@ -18,7 +18,7 @@ install:
 
 script:
   - nosetests --with-coverage --cover-erase --cover-package=rosa -v -w api/python/tests/
-  - flake8 --statistics --count --config=setup.cfg ./api/python/rosa
+  - flake8 --statistics --count --config=./api/python/setup.cfg ./api/python/rosa
 
 after_success:
     - pip uninstall -y rosa

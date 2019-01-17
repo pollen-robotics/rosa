@@ -1,0 +1,2 @@
+class Rosa(object):
+    pass
