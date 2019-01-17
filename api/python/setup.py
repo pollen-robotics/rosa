@@ -14,4 +14,6 @@ setup(name='rosa',
       url='https://github.com/pollen-robotics/rosa',
 
       packages=find_packages(),
-      )
+      install_requires=[
+          'websocket-client',
+      ])
