@@ -38,7 +38,6 @@ class YoloModel(object):
             cls.load_model()
         return YoloModel._model.class_names[i]
 
-
     @classmethod
     def load_model(cls):
         model_path = get_file(

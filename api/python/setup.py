@@ -19,4 +19,5 @@ setup(name='rosa',
           'opencv-python>3, <4',
           'Pillow',
           'numpy',
+          'keras'
       ])
