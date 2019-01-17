@@ -14,7 +14,7 @@ before_install:
   - pip install nose python-coveralls flake8
 
 install:
-  - pip install -e ./api/python/rosa
+  - pip install -e ./api/python/
 
 script:
   - nosetests --with-coverage --cover-erase --cover-package=rosa -v -w api/python/tests/
