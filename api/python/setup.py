@@ -16,4 +16,7 @@ setup(name='rosa',
       packages=find_packages(),
       install_requires=[
           'websocket-client',
+          'opencv-python>3, <4',
+          'Pillow',
+          'numpy',
       ])
