@@ -21,4 +21,5 @@ setup(name='rosa',
           'numpy',
           'keras',
           'tensorflow',  # can be replaced by tensorflow-gpu
+          'matplotlib',
       ])
