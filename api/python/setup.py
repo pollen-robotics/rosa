@@ -19,5 +19,6 @@ setup(name='rosa',
           'opencv-python>3, <4',
           'Pillow',
           'numpy',
-          'keras'
+          'keras',
+          'tensorflow',  # can be replaced by tensorflow-gpu
       ])
