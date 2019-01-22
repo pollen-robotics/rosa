@@ -7,8 +7,8 @@ class Rosa(object):
     def __init__(self, host):
         self._io = RemoteIO(host)
 
-        self._left_wheel = Wheel(id='a', remote_io=self._io)
-        self._right_wheel = Wheel(id='b', remote_io=self._io, inverse=True)
+        self._left_wheel = Wheel(id='b', remote_io=self._io, inverse=True)
+        self._right_wheel = Wheel(id='a', remote_io=self._io)
 
         self._cam = Camera(host)
 
