@@ -1,5 +1,6 @@
 """YOLO_v3 Model Defined in Keras."""
 
+from __future__ import division
 from functools import wraps
 
 import numpy as np
