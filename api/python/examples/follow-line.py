@@ -21,6 +21,8 @@ if __name__ == '__main__':
 
     while True:
         img = rosa.camera.last_frame
+        if img is None:
+            continue
         center = get_line_center(img)
 
         if center is None:

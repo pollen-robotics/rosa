@@ -21,6 +21,10 @@ if __name__ == '__main__':
 
     while True:
         img = rosa.camera.last_frame
+
+        if img is None:
+            continue
+
         found_obj = detect_objects(img)
 
         cubes = [obj for obj in found_obj if obj.label == 'cube']
