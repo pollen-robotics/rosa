@@ -31,9 +31,6 @@ def get_line_center(img,
         x, y = (int(m['m10'] / m['m00']), int(m['m01'] / m['m00']))
         x, y = x + x1, y + y1
 
-        x = ((x / width) - 0.5) * 2
-        y = ((y / height) - 0.5) * 2
-
         return (x, y)
 
     return None
