@@ -1,3 +1,4 @@
+import os
 import cv2 as cv
 import numpy as np
 
@@ -46,10 +47,13 @@ class YoloModel(object):
             cache_subdir='rosa',
             file_hash=PRETRAINED_WEIGHTS['hash']
         )
+
+        base_path = os.path.dirname(__file__)
+
         model = YoloV3(
             model_path=model_path,
-            anchors_path='./vision/yolo/tiny_yolo_anchors.txt',
-            classes_path='./vision/yolo/classes.txt',
+            anchors_path=os.path.join(base_path, 'yolov3/tiny_yolo_anchors.txt'),
+            classes_path=os.path.join(base_path, 'yolov3/classes.txt'),
             model_image_size=(256, 320),
             score=0.2,
             iou=0.15,
