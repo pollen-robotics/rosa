@@ -11,9 +11,9 @@ from rosa.vision import detect_objects, get_line_center
 
 class VisionTestCase(unittest.TestCase):
     RES = 320, 256, 3
-    line_url = 'https://github.com/pollen-robotics/rosa/raw/rosai/api/python/tests/line.jpg'
-    obj_url = 'https://github.com/pollen-robotics/rosa/raw/rosai/api/python/tests/obj.jpg'
-    no_obj_url = 'https://github.com/pollen-robotics/rosa/raw/rosai/api/python/tests/no-obj.jpg'
+    line_url = 'https://github.com/pollen-robotics/rosa/raw/master/api/python/tests/line.jpg'
+    obj_url = 'https://github.com/pollen-robotics/rosa/raw/master/api/python/tests/obj.jpg'
+    no_obj_url = 'https://github.com/pollen-robotics/rosa/raw/master/api/python/tests/no-obj.jpg'
 
     def setUp(self):
         self.random_img = self.generate_random_image()
