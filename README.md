@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pollen-robotics/rosa.svg?branch=master)](https://travis-ci.org/pollen-robotics/rosa)
+
 # Le projet Rosa : un robot ramasseur d'objets
 
 Le robot Rosa a été conçu dans le cadre d'une mission de [Poppy station](https://www.poppystation.org) effectuée par [Pollen-Robotics](https://www.pollen-robotics.com) et visant à concevoir un robot pour l'éducation capable de se déplacer dans l'environnement, de détecter et reconnaître des objets et de les transporter. Il peut être programmé depuis un ordinateur ou une tablette en Python ou Scratch 3.
