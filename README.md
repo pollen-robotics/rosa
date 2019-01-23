@@ -93,4 +93,9 @@ La caméra du robot est utilisée pour reconnaître et détecter ses objets. Le 
 ## Utilisation
 
 ### Python
+
+L'API Python permet de controler le robot, d'accéder aux valeurs renvoyées par les senseurs ainsi que d'accéder à la caméra. Elle permet également l'utilisation des primitives de vision telles que la détection d'une ligne noire ou la détection d'objets.
+
+Pour plus de détails, se reporter à la documentation dédiée : [Python's API](./api/python/readme.md)
+
 ### Scratch 3
