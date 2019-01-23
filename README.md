@@ -1,7 +1,94 @@
-# Rosa
+# Le projet Rosa : un robot ramasseur d'objets
 
-This repository contains the arduino code for the robot. There is two versions at the moment. One working using serial communication and the other one uses websocket.
+Le robot Rosa a été conçu dans le cadre d'une mission de [Poppy station](https://www.poppystation.org) effectuée par [Pollen-Robotics](https://www.pollen-robotics.com) et visant à concevoir un robot pour l'éducation capable de se déplacer dans l'environnement, de détecter et reconnaître des objets et de les transporter. Il peut être programmé depuis un ordinateur ou une tablette en Python ou Scratch 3.
 
-You will also find a minimal Python API to control the robot with a follow line example.
+Ce projet est entièrement open-source et s'appuie sur des composants Makers et DIY. Il a été conçu pour être facilement assemblable et personalisable. Il vise à être construit et distribué par les réseaux de distribution de la ligue pour l'Enseignement.
 
-You can also find a python utility that can be used to exposes the serial port as a websocket. It's useful for communicating with the Scratch 3 extension.
+**TODO: video**
+
+## Guide de démarrage
+
+### Les différents modèles 3D et composants
+### Assemblage
+
+### Préparer la carte SD
+
+Le logiciel embarqué du robot est disponible sous forme ISO prête à flasher sur une carte SD (8Go minimum). Cette ISO est disponible [ici](TODO). Ce logiciel est responsable de piloter les moteurs en fonction des commandes reçues ainsi que d'envoyer les informations des différents capteurs.
+
+Pour plus d'information pour écrire cette image est, par exemple, accessible sur le site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
+
+Une fois la carte écrite avec l'image téléchargée, elle peut être insérée dans la carte Raspberry Pi de Rosa.
+
+Afin de simplifier la première connexion au réseau WiFi, il est possible de le paramétrer directement sur la carte SD que l'on vient d'écrire. Il peut donc être plus pratique de réaliser cette étape avant d'insérer dans le robot (voir section [Connecter au réseau WiFi](#wifi) pour plus d'informations).
+
+### Alimentation
+
+### Connecter Rosa au réseau
+
+Afin de pouvoir programmer le robot, il est nécessaire de le connecter au même réseau que son ordinateur ou sa tablette. Il peut se connecter au WiFi ou en Ethernet via USB.
+
+#### WiFi
+
+La carte Raspberry-Pi utilisée par le robot permet de se connecter à un réseau WiFi. Il est donc possible de la configurer comme n'importe quelle carte Raspberry-Pi.
+
+Si vous avez facilement accès à la carte, il est possible de brancher un clavier (en USB) et un écran (en HDMI) sur la carte et d'utiliser l'interface graphique de Raspberry-Pi pour configurer un réseau WiFi. Ce réseau sera conservé et le robot utilisera automatiquement ce réseau.
+
+Il est également possible de venir rajouter un fichier spécial directement sur la partition BOOT de la carte SD. Par exemple, si on souhaite se connecter automatiquement au réseau WiFI "mon-reseau-wifi" avec comme mot de passe "password" il faut ajouter le fichier wpa_supplicant.conf suivant :
+
+```
+country=fr
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
+
+network={
+    ssid="mon-reseau-wifi"
+    psk="password"
+}
+```
+
+Plus d'informations sur comment connecter une Raspberry-Pi à un réseau WiFi est disponible [sur le site de Raspberry-Pi](https://www.raspberrypi.org/documentation/configuration/wireless/).
+
+#### Ethernet via USB
+
+Il est également possible de connecter le robot au réseau via un cable en utilisant un adaptateur USB-Ethernet et en utilisant le port USB accessible à l'arrière du robot.
+
+La détection du réseau est alors automatique.
+
+## Capacités et caractéristiques
+
+Le robot a été conçu pour pouvoir être utilisé dans différentes activités et dans des contextes variés. Les différentes capacités et caractéristiques du robot sont présentées ci-dessous.
+
+### Navigation
+
+Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent tourner vers l'avant, vers l'arrière et s'arrêter. Le robot est donc capable de se déplacer dans un plan et de tourner sur lui même. La vitesse de déplacement du robot est réglable (**TODO: fourchette**).
+
+### Détection d'obstacles
+
+Le robot possède plusieurs capteurs de distance (utilisant un émetteur/récepteur infra-rouge). Ces capteurs sont situés à l'avant du robot (avant gauche et avant droite) ainsi que sous le robot (dessous gauche et dessous droite).
+
+Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de **TODO: fourchette**.
+
+Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un bord de table. Ils peuvent également servir à détecter une ligne noire si elle est suffisament large (~ la largeur du robot).
+
+### Suivi de ligne
+
+Le robot peut également suivre une ligne noire. La caméra est utilisée pour la détecter et identifier sa position verticale à une distance du robot donnée.
+
+**TODO: vidéo et images**
+
+### Détection et reconnaissance d'objet
+
+Le robot peut également détecter et reconnaître certains objets placés devant lui. Cette capacité permet la création d'activités autour de la collecte, du convoyage et du tri d'objets.
+
+Les objets de couleur reconnus par le robot sont un cube, une étoile et une boule. Le modèle 3D de ces objets est disponible [ici](**TODO**) et ils sont facilement imprimables sur une imprimante 3D du commerce.
+
+La caméra du robot est utilisée pour reconnaître et détecter ses objets. Le robot renvoie une liste de l'ensemble des objets présents à l'image (il n'y a pas de limite maximale) avec pour chacun des objets son type (cube, étoile ou boule) et sa position dans l'image (la boite englobante).
+
+**TODO: video + image**
+
+*Note: il est possible, bien que plus compliqué, d'entrainer le robot à reconnaître de nouveaux objets si l'on souhaite.*
+
+## Utilisation
+
+### Python
+### Scratch 3
