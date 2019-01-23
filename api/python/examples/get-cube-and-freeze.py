@@ -1,3 +1,5 @@
+import cv2 as cv
+
 from rosa import Rosa
 from rosa.vision import detect_objects
 
@@ -25,7 +27,7 @@ if __name__ == '__main__':
         if img is None:
             continue
 
-        found_obj = detect_objects(img)
+        found_obj = detect_objects(img, render=True)
 
         cubes = [obj for obj in found_obj if obj.label == 'cube']
         if not cubes:  # We can't find a cube so we have to look around
@@ -42,3 +44,6 @@ if __name__ == '__main__':
             target = (((x / width) * 2 - 1), -((y / height) * 2 - 1))
 
             follow_cube(rosa, target)
+
+        cv.imshow('get cube', img)
+        cv.waitKey(1)

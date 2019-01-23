@@ -1,5 +1,7 @@
 from __future__ import division
 
+import cv2 as cv
+
 from rosa import Rosa
 from rosa.vision import get_line_center
 
@@ -28,10 +30,13 @@ if __name__ == '__main__':
         img = rosa.camera.last_frame
         if img is None:
             continue
-        center = get_line_center(img)
+        center = get_line_center(img, render=True)
 
         if center is None:
             look_around(rosa)
 
         else:
             follow_line(rosa, center)
+
+        cv.imshow('follow line', img)
+        cv.waitKey(1)

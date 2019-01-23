@@ -4,7 +4,8 @@ import cv2 as cv
 def get_line_center(img,
                     band_center_y=300,
                     band_height=50, band_width_ratio=0.5,
-                    vmax=75):
+                    vmax=75,
+                    render=False):
 
     y1, y2 = (band_center_y - band_height // 2,
               band_center_y + band_height // 2)
@@ -30,6 +31,9 @@ def get_line_center(img,
     if m['m00'] > 0:
         x, y = (int(m['m10'] / m['m00']), int(m['m01'] / m['m00']))
         x, y = x + x1, y + y1
+
+        if render:
+            cv.circle(img, (x, y), 10, (0, 0, 255), -1)
 
         return (x, y)
 

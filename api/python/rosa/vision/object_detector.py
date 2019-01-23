@@ -7,8 +7,12 @@ VisualObject = namedtuple('VisualObject',
                           ('label', 'center', 'box', 'confidence'))
 
 
-def detect_objects(img):
-    img, res = YoloModel.detect_objects(img)
+def detect_objects(img, render=False):
+    yolo_img, res = YoloModel.detect_objects(img)
+
+    if render:
+        img[:] = yolo_img[:]
+
     boxes, scores, classes = res
 
     height, width, _ = img.shape

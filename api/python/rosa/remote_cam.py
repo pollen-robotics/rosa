@@ -28,7 +28,7 @@ class Camera(object):
             pil_img = Image.open(f)
             img = np.asarray(pil_img)
 
-        return img
+        return img.copy()
 
     def _video_grab(self):
         while True:
