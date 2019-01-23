@@ -56,11 +56,11 @@ class VisionTestCase(unittest.TestCase):
         cube, star = obj
         self.assertEqual(cube.label, 'cube')
         self.assertTrue(
-            np.linalg.norm(np.array(cube.center) - np.array((193, 204))) < 5.0
+            np.linalg.norm(np.array(cube.center) - np.array((97, 109))) < 5.0
         )
         self.assertEqual(star.label, 'star')
         self.assertTrue(
-            np.linalg.norm(np.array(star.center) - np.array((388, 179))) < 5.0
+            np.linalg.norm(np.array(star.center) - np.array((194, 95))) < 5.0
         )
 
     def generate_random_image(self):

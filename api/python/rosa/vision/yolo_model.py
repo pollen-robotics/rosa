@@ -18,11 +18,11 @@ class YoloModel(object):
     _model = None
 
     @classmethod
-    def detect_objects(cls, img):
+    def detect_objects(cls, src_img):
         if YoloModel._model is None:
             cls.load_model()
 
-        img = cv.resize(img, (640, 480))
+        img = cv.resize(src_img, (320, 256))
         img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         pil_img = Image.fromarray(img)
 
@@ -30,6 +30,7 @@ class YoloModel(object):
 
         img = np.asarray(pil_img)
         img = cv.cvtColor(img, cv.COLOR_RGB2BGR)
+        img = cv.resize(img, tuple(reversed(src_img.shape[:2])))
 
         return img, res
 
