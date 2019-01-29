@@ -14,6 +14,11 @@ class WsMotorHandler(WebSocket):
         if verbose:
             print('Got cmd: {}'.format(cmd))
 
+        if 'setup' in cmd:
+            controller.setup(**cmd['setup'])
+            if verbose:
+                print('Setup with', cmd['setup'])
+
         if 'wheels' in cmd:
             wheels = cmd['wheels']
 
@@ -23,11 +28,6 @@ class WsMotorHandler(WebSocket):
                     controller.set_speed(m, s)
                     if verbose:
                         print('Set motor {} speed to {}'.format(m, s))
-
-        if 'setup' in cmd:
-            controller.setup(**cmd['setup'])
-            if verbose:
-                print('Setup with', cmd['setup'])
 
     def handleClose(self):
         for m in ('a', 'b'):
