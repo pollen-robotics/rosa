@@ -7,15 +7,16 @@ pins = {}
 def setup(AIN1, AIN2, PWMA,
           BIN1, BIN2, PWMB,
           STBY):
-    pins['AIN1'] = gpio.DigitalOutputDevice(AIN1)
-    pins['AIN2'] = gpio.DigitalOutputDevice(AIN2)
-    pins['PWMA'] = gpio.PWMOutputDevice(PWMA)
+    if not pins:
+        pins['AIN1'] = gpio.DigitalOutputDevice(AIN1)
+        pins['AIN2'] = gpio.DigitalOutputDevice(AIN2)
+        pins['PWMA'] = gpio.PWMOutputDevice(PWMA)
 
-    pins['BIN1'] = gpio.DigitalOutputDevice(BIN1)
-    pins['BIN2'] = gpio.DigitalOutputDevice(BIN2)
-    pins['PWMB'] = gpio.PWMOutputDevice(PWMB)
+        pins['BIN1'] = gpio.DigitalOutputDevice(BIN1)
+        pins['BIN2'] = gpio.DigitalOutputDevice(BIN2)
+        pins['PWMB'] = gpio.PWMOutputDevice(PWMB)
 
-    pins['STBY'] = gpio.DigitalOutputDevice(STBY)
+        pins['STBY'] = gpio.DigitalOutputDevice(STBY)
 
 
 def get_motor_pins(motor):
