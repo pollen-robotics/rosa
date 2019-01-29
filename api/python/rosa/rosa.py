@@ -21,7 +21,7 @@ class Rosa(object):
         self._front_center_sensor = Distance('front-center', remote_io=self._io)
         self._front_right_sensor = Distance('front-right', remote_io=self._io)
 
-        # self._cam = Camera(host)
+        self._cam = Camera(host)
 
     @property
     def left_wheel(self):
