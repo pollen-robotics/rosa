@@ -1,49 +1,52 @@
-import json
+import numpy as np
+import gpiozero as gpio
 
-import motors_controller as controller
-
-from SimpleWebSocketServer import WebSocket, SimpleWebSocketServer
-
-verbose = True
+pins = {}
 
 
-class WsMotorHandler(WebSocket):
-    def handleMessage(self):
-        cmd = json.loads(self.data)
+def setup(AIN1, AIN2, PWMA,
+          BIN1, BIN2, PWMB,
+          STBY):
+    if not pins:
+        pins['AIN1'] = gpio.DigitalOutputDevice(AIN1)
+        pins['AIN2'] = gpio.DigitalOutputDevice(AIN2)
+        pins['PWMA'] = gpio.PWMOutputDevice(PWMA)
 
-        if verbose:
-            print('Got cmd: {}'.format(cmd))
+        pins['BIN1'] = gpio.DigitalOutputDevice(BIN1)
+        pins['BIN2'] = gpio.DigitalOutputDevice(BIN2)
+        pins['PWMB'] = gpio.PWMOutputDevice(PWMB)
 
-        if 'setup' in cmd:
-            controller.setup(**cmd['setup'])
-            if verbose:
-                print('Setup with', cmd['setup'])
-
-        if 'wheels' in cmd:
-            wheels = cmd['wheels']
-
-            for m in ('a', 'b'):
-                if m in wheels:
-                    s = wheels[m]
-                    controller.set_speed(m, s)
-                    if verbose:
-                        print('Set motor {} speed to {}'.format(m, s))
-
-    def handleClose(self):
-        for m in ('a', 'b'):
-            controller.set_speed(m, 0)
+        pins['STBY'] = gpio.DigitalOutputDevice(STBY)
 
 
-if __name__ == '__main__':
-    import argparse
+def get_motor_pins(motor):
+    if motor not in ('a', 'b'):
+        raise ValueError('motor should be in ("a", "b")!')
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--verbose', action='store_true')
-    args = parser.parse_args()
+    in1, in2, pwm = ((pins['AIN1'], pins['AIN2'], pins['PWMA'])
+                     if motor == 'a' else
+                     (pins['BIN1'], pins['BIN2'], pins['PWMB']))
+    return in1, in2, pwm
 
-    server = SimpleWebSocketServer('', 1234, WsMotorHandler)
 
-    if args.verbose:
-        print('Server up and running.')
+def set_speed(motor, speed):
+    speed = np.clip(speed, -1, 1)
 
-    server.serveforever()
+    pins['STBY'].on()
+
+    in1, in2, pwm = get_motor_pins(motor)
+
+    if speed < 0:
+        in1.off()
+        in2.on()
+    else:
+        in1.on()
+        in2.off()
+
+    pwm.value = abs(speed)
+
+
+def short_brake(motor):
+    in1, in2, _ = get_motor_pins(motor)
+    in1.on()
+    in2.on()
