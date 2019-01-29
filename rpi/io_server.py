@@ -1,6 +1,6 @@
 import json
 
-import motors_controller as controller
+import io_controller as io
 
 from SimpleWebSocketServer import WebSocket, SimpleWebSocketServer
 
@@ -15,7 +15,7 @@ class WsMotorHandler(WebSocket):
             print('Got cmd: {}'.format(cmd))
 
         if 'setup' in cmd:
-            controller.setup(**cmd['setup'])
+            io.setup(**cmd['setup'])
             if verbose:
                 print('Setup with', cmd['setup'])
 
@@ -25,13 +25,13 @@ class WsMotorHandler(WebSocket):
             for m in ('a', 'b'):
                 if m in wheels:
                     s = wheels[m]
-                    controller.set_speed(m, s)
+                    io.set_motor_speed(m, s)
                     if verbose:
                         print('Set motor {} speed to {}'.format(m, s))
 
     def handleClose(self):
         for m in ('a', 'b'):
-            controller.set_speed(m, 0)
+            io.set_motor_speed(m, 0)
 
 
 if __name__ == '__main__':

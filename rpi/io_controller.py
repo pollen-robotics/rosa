@@ -29,7 +29,7 @@ def get_motor_pins(motor):
     return in1, in2, pwm
 
 
-def set_speed(motor, speed):
+def set_motor_speed(motor, speed):
     speed = np.clip(speed, -1, 1)
 
     pins['STBY'].on()
@@ -46,7 +46,7 @@ def set_speed(motor, speed):
     pwm.value = abs(speed)
 
 
-def short_brake(motor):
+def motor_short_brake(motor):
     in1, in2, _ = get_motor_pins(motor)
     in1.on()
     in2.on()
