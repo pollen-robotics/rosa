@@ -26,4 +26,7 @@ Chacun des blocs spécifiques à l'extension pour le robot sont décrits ci-dess
 * déclencher un son de buzzer sur le robot pendant la durée (en secondes) spécifiée
 
 **TODO: img**
+* Est-ce qu'une ligne noire est détectée ?
+
+**TODO: img**
 * mesurer l'abscisse de la ligne noire dans le repère de l'image
