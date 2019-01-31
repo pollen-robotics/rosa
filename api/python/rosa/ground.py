@@ -6,3 +6,7 @@ class Ground(object):
     @property
     def distance(self):
         return self._io.last_state['ground'][self._name]
+
+    def is_ground(self):
+        # TODO:
+        return True

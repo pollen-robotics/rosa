@@ -68,9 +68,13 @@ Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent to
 
 Le robot possède plusieurs capteurs de distance (utilisant un émetteur/récepteur infra-rouge). Ces capteurs sont situés à l'avant du robot (avant gauche et avant droite) ainsi que sous le robot (dessous gauche et dessous droite).
 
-Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de **TODO: fourchette**.
+Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de **TODO: fourchette**. Ils permettent de mesurer la distance ainsi que la couleur. 3 capteurs sont positionnés :
 
-Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un bord de table. Ils peuvent également servir à détecter une ligne noire si elle est suffisament large (~ la largeur du robot).
+- à l'avant gauche
+- à l'avant centre
+- et à l'avant droite.
+
+Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un bord de table. Ils peuvent également servir à détecter une ligne noire si elle est suffisament large (~ la largeur du robot). Il y a 4 capteurs de bord de table situés à chacun des coins du robot.
 
 ### Suivi de ligne
 
@@ -89,6 +93,10 @@ La caméra du robot est utilisée pour reconnaître et détecter ses objets. Le 
 **TODO: video + image**
 
 *Note: il est possible, bien que plus compliqué, d'entrainer le robot à reconnaître de nouveaux objets si l'on souhaite.*
+
+### Autres interactions
+
+Le robot est également équipé d'un buzzer et de deux leds à l'avant permettant d'enrichir les interactions possibles.
 
 ## Utilisation
 

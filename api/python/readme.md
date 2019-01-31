@@ -56,9 +56,51 @@ For a more complete example, you can check:
 
 * [simple demo movements](./examples/move.py)
 
-### Distance sensor
+### Distance and color sensor
 
-**TODO**
+The robot is equipped with three distance and color sensor in the front (left, center and right). Their values can be accessed directly like this.
+
+```
+# To retrieve the distance from the front left sensor:
+print(rosa.front_left_sensor.distance)
+
+# To get the color from the front center sensor:
+print(rosa.front_center_sensor.color)
+```
+
+### Ground sensors
+
+There is also four ground sensors under the robot (at each corner). They can be accessed to check whether the sensor is detecting the ground or not.
+
+```
+if rosa.front_left_ground.is_ground():
+    print('keep navigating.')
+else:
+    print('Warning: no ground detected!')
+```
+
+### Other interactions
+
+You can also control a buzzer:
+
+```
+# Make the robot buzz for 2s
+rosa.buzz(duration=2)
+```
+
+and turn on/off the two front leds:
+
+```
+import time
+
+for _ in range(10):
+    rosa.left_led.on()
+    rosa.right_led.off()
+    time.sleep(1)
+    rosa.left_led.off()
+    rosa.right_led.on()
+    time.sleep(1)
+```
 
 ## Vision
 

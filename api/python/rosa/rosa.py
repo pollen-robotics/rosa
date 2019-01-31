@@ -23,6 +23,8 @@ class Rosa(object):
 
         self._cam = Camera(host)
 
+        # TODO: add front leds
+
     @property
     def left_wheel(self):
         return self._left_wheel
@@ -62,3 +64,6 @@ class Rosa(object):
     @property
     def camera(self):
         return self._cam
+
+    def buzz(self, duration):
+        self._io.buzz(duration)
