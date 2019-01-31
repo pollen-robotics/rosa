@@ -11,13 +11,12 @@ def look_around(rosa, speed=0.25):
     rosa.right_wheel.speed = -speed
 
 
-def follow_line(rosa, center, gain=0.4, img_width=320):
+def follow_line(rosa, center, gain=0.4, img_width=640):
     dx, _ = center
-
     dx = ((dx / img_width) - 0.5) * 2
 
-    ls = gain * (0.5 * -dx + 0.5)
-    rs = gain * (0.5 * dx + 0.5)
+    ls = gain * (0.5 * dx + 0.5)
+    rs = gain * (0.5 * -dx + 0.5)
 
     rosa.left_wheel.speed = ls
     rosa.right_wheel.speed = rs
