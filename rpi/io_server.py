@@ -14,6 +14,10 @@ class WsIOHandler(WebSocket):
     pub_period = 1.0 / 60.0
 
     def handleConnected(self):
+        io.setup(AIN1=18, AIN2=17, PWMA=4,
+                 BIN1=24, BIN2=27, PWMB=22,
+                 STBY=23)
+
         self._send_loop_running = True
 
         def _send_loop():
@@ -54,11 +58,6 @@ class WsIOHandler(WebSocket):
 
         if verbose:
             print('Got cmd: {}'.format(cmd))
-
-        if 'setup' in cmd:
-            io.setup(**cmd['setup'])
-            if verbose:
-                print('Setup with', cmd['setup'])
 
         if 'wheels' in cmd:
             wheels = cmd['wheels']
