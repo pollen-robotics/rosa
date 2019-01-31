@@ -107,3 +107,7 @@ L'API Python permet de controler le robot, d'accéder aux valeurs renvoyées par
 Pour plus de détails, se reporter à la documentation dédiée : [Python's API](./api/python/readme.md)
 
 ### Scratch 3
+
+Le robot peut également être programmé à l'aide d'une version dédiée de Scratch 3. Elle est accessible en ligne directement ici : **TODO**.
+
+Les différents blocs proposés sont présentés ici : [extension Rosa pour Scratch 3](./api/scratch/readme.md).
