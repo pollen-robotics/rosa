@@ -17,7 +17,7 @@ Ce projet est entièrement open-source et s'appuie sur des composants Makers et 
 
 Le logiciel embarqué du robot est disponible sous forme ISO prête à flasher sur une carte SD (8Go minimum). Cette ISO est disponible [ici](TODO). Ce logiciel est responsable de piloter les moteurs en fonction des commandes reçues ainsi que d'envoyer les informations des différents capteurs.
 
-Pour plus d'information pour écrire cette image est, par exemple, accessible sur le site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
+Pour plus d'information pour écrire cette image on pourra se référer, par exemple, au site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
 
 Une fois la carte écrite avec l'image téléchargée, elle peut être insérée dans la carte Raspberry Pi de Rosa.
 
@@ -48,13 +48,23 @@ network={
 }
 ```
 
-Plus d'informations sur comment connecter une Raspberry-Pi à un réseau WiFi est disponible [sur le site de Raspberry-Pi](https://www.raspberrypi.org/documentation/configuration/wireless/).
+Plus d'informations sur comment connecter une Raspberry-Pi à un réseau WiFi sont disponibles [sur le site de Raspberry-Pi](https://www.raspberrypi.org/documentation/configuration/wireless/).
 
 #### Ethernet via USB
 
 Il est également possible de connecter le robot au réseau via un cable en utilisant un adaptateur USB-Ethernet et en utilisant le port USB accessible à l'arrière du robot.
 
 La détection du réseau est alors automatique.
+
+#### Utilisation de ZeroConf
+
+Le robot est toujours accessible sur le réseau à l'adresse *rosa.local*. Cela permet de simplifier la procédure de connexion, il n'est pas nécessaire de connaître l'adresse IP du robot. Cette addresse est utilisée par défaut par l'extension Scratch 3.
+
+Cependant, pour pouvoir fonctionner ZeroConf nécessite d'installer un logiciel sur l'ordinateur.
+
+- Pour Windows : [Bonjour print services](https://support.apple.com/kb/DL999)
+- Pour Linux : avahi-daemon (mDNS) et avahi-autoipd (IPv4LL)
+- Pour MacOS : ZeroConf est déjà installé.
 
 ## Capacités et caractéristiques
 
@@ -66,7 +76,7 @@ Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent to
 
 ### Détection d'obstacles
 
-Le robot possède plusieurs capteurs de distance (utilisant un émetteur/récepteur infra-rouge). Ces capteurs sont situés à l'avant du robot (avant gauche et avant droite) ainsi que sous le robot (dessous gauche et dessous droite).
+Le robot possède plusieurs capteurs de distance (utilisant un émetteur/récepteur infra-rouge). Ces capteurs sont situés à l'avant du robot ainsi que sous le robot.
 
 Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de **TODO: fourchette**. Ils permettent de mesurer la distance ainsi que la couleur. 3 capteurs sont positionnés :
 
