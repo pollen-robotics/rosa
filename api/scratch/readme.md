@@ -1,6 +1,6 @@
 # Extension Rosa pour Scratch 3
 
-Une version spéciale de Scratch permettant de programmer le robot Rosa est disponible à cette addresse : **TODO**.
+Une version spéciale de Scratch permettant de programmer le robot Rosa est disponible à cette addresse : http://www.scratch.pollen-robotics.cc
 
 Cette extension permet de déplacer le robot, de récupérer les informations issues de ces différents capteurs et ainsi de programmer des comportements de suivi d'objets, d'évitement d'obstacles, de suivi de ligne, etc.
 

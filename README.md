@@ -118,6 +118,6 @@ Pour plus de détails, se reporter à la documentation dédiée : [Python's API]
 
 ### Scratch 3
 
-Le robot peut également être programmé à l'aide d'une version dédiée de Scratch 3. Elle est accessible en ligne directement ici : **TODO**.
+Le robot peut également être programmé à l'aide d'une version dédiée de Scratch 3. Elle est accessible en ligne directement ici : http://www.scratch.pollen-robotics.cc
 
 Les différents blocs proposés sont présentés ici : [extension Rosa pour Scratch 3](./api/scratch/readme.md).
