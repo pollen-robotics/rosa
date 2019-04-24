@@ -70,6 +70,8 @@ i2c_channels = {
 
 mux_address = 0x70
 i2c_bus = smbus.SMBus(1)
+apds = APDS9960(i2c_bus)
+last_mode = {channel: None for channel in i2c_channels.keys()}
 
 
 def set_i2c_channel(channel):
@@ -88,10 +90,10 @@ def get_ground(sensor):
 def get_color(sensor):
     set_i2c_channel(sensor)
 
-    apds = APDS9960(i2c_bus)
-    apds.enableLightSensor()
-
-    time.sleep(0.110)  # default ATIME is 103ms
+    if last_mode[sensor] != 'color':
+        apds.enableLightSensor()
+        time.sleep(0.110)  # default ATIME is 103ms
+        last_mode[sensor] = 'color'
 
     red = apds.readRedLight()
     green = apds.readGreenLight()
@@ -104,13 +106,12 @@ def get_color(sensor):
 def get_dist(sensor, gain=0, drive=0):
     set_i2c_channel(sensor)
 
-    apds = APDS9960(i2c_bus)
-    apds.enableProximitySensor()
+    if last_mode[sensor] != 'proximity':
+        apds.enableProximitySensor()
 
-    apds.setProximityGain(gain)
-    apds.setLEDDrive(drive)
-
-    time.sleep(0.01)
+        apds.setProximityGain(gain)
+        apds.setLEDDrive(drive)
+        last_mode[sensor] = 'proximity'
 
     return apds.readProximity()
 
