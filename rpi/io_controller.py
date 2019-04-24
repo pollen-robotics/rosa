@@ -91,7 +91,7 @@ def get_color(sensor):
     apds = APDS9960(i2c_bus)
     apds.enableLightSensor()
 
-    time.sleep(0.11)
+    time.sleep(0.110)  # default ATIME is 103ms
 
     red = apds.readRedLight()
     green = apds.readGreenLight()
