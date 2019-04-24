@@ -21,16 +21,15 @@ line_center = [None]
 
 
 class WsIOHandler(WebSocket):
-    pub_period = 1.0 / 60.0
+    pub_period = 1.0 / 50.0
 
     def handleConnected(self):
-        io.setup(AIN1=18, AIN2=17, PWMA=4,
-                 BIN1=24, BIN2=27, PWMB=22,
-                 STBY=23)
-
         self._send_loop_running = True
+        self._last_state = next(self._state_getter)
 
         def _send_loop():
+            self._state_getter = self.stateGetter()
+
             while self._send_loop_running:
                 self.sendState()
                 time.sleep(WsIOHandler.pub_period)
@@ -44,27 +43,37 @@ class WsIOHandler(WebSocket):
     # REQ/REP ?
     #
     # Problematique : eviter les lags/buffer overflow en cas de latence reseau
-
     def sendState(self):
-        state = {
-            'ground': {
-                sensor: io.get_ground(sensor)
-                for sensor in ('front-left', 'front-right', 'rear-left', 'rear-right')
-            },
-            'color': {
-                sensor: io.get_color(sensor)
-                for sensor in ('front-left', 'front-center', 'front-right')
-            },
-            'distance': {
-                sensor: io.get_dist(sensor)
-                for sensor in ('front-left', 'front-center', 'front-right')
-            }
-        }
+        state = next(self._state_getter)
 
         if use_cam[0]:
             state['line-center'] = line_center[0]
 
-        self.sendMessage(json.dumps(state))
+        self._last_state.update(state)
+
+        self.sendMessage(json.dumps(self._last_state))
+
+    def stateGetter(self):
+        def _get(color):
+            state = {
+                'distance': {
+                    sensor: io.get_dist(sensor)
+                    for sensor in io.i2c_channels.keys()
+                },
+            }
+            if color:
+                state['color'] = {
+                    sensor: io.get_color(sensor)
+                    for sensor in ['front-center']
+                }
+
+            return state
+
+        while True:
+            yield _get(color=True)
+
+            for _ in range(19):
+                yield _get(color=False)
 
     def handleMessage(self):
         cmd = json.loads(self.data)
