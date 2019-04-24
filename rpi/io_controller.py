@@ -65,12 +65,11 @@ i2c_channels = {
     'GU5': 0x08,
     'FU1': 0x10,
     'FU2': 0x20,
-    'FU4': 0x40,
+    'FU3': 0x40,
 }
 
 mux_address = 0x70
 i2c_bus = smbus.SMBus(1)
-ground_threshold = 200
 
 
 def set_i2c_channel(channel):
