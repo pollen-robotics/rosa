@@ -4,35 +4,35 @@ import gpiozero as gpio
 pins = {}
 
 
-def setup(AIN1, AIN2, PWMA,
-          BIN1, BIN2, PWMB,
-          STBY):
-    if not pins:
-        pins['AIN1'] = gpio.DigitalOutputDevice(AIN1)
-        pins['AIN2'] = gpio.DigitalOutputDevice(AIN2)
-        pins['PWMA'] = gpio.PWMOutputDevice(PWMA)
-        pins['BIN1'] = gpio.DigitalOutputDevice(BIN1)
-        pins['BIN2'] = gpio.DigitalOutputDevice(BIN2)
-        pins['PWMB'] = gpio.PWMOutputDevice(PWMB)
-        pins['STBY'] = gpio.DigitalOutputDevice(STBY)
+###########################
+# Motor related functions #
+###########################
 
-        # pins['ground-front-left'] = gpio.SmoothedInputDevice(GD_FL)
+motor_pins = {
+    'AIN1': gpio.DigitalOutputDevice(27),
+    'AIN2': gpio.DigitalOutputDevice(23),
+    'PWMA': gpio.PWMOutputDevice(22),
+    'BIN1': gpio.DigitalOutputDevice(17),
+    'BIN2': gpio.DigitalOutputDevice(15),
+    'PWMB': gpio.PWMOutputDevice(14),
+    'STBY': gpio.DigitalOutputDevice(18),
+}
 
 
 def get_motor_pins(motor):
     if motor not in ('a', 'b'):
         raise ValueError('motor should be in ("a", "b")!')
 
-    in1, in2, pwm = ((pins['AIN1'], pins['AIN2'], pins['PWMA'])
+    in1, in2, pwm = ((motor_pins['AIN1'], motor_pins['AIN2'], motor_pins['PWMA'])
                      if motor == 'a' else
-                     (pins['BIN1'], pins['BIN2'], pins['PWMB']))
+                     (motor_pins['BIN1'], motor_pins['BIN2'], motor_pins['PWMB']))
     return in1, in2, pwm
 
 
 def set_motor_speed(motor, speed):
     speed = np.clip(speed, -1, 1)
 
-    pins['STBY'].on()
+    motor_pins['STBY'].on()
 
     in1, in2, pwm = get_motor_pins(motor)
 
