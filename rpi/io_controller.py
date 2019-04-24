@@ -78,6 +78,13 @@ def set_i2c_channel(channel):
     i2c_bus.write_byte_data(mux_address, 0x04, i2c_channels[channel])
 
 
+mux_address = 0x70
+i2c_bus = smbus.SMBus(1)
+set_i2c_channel(list(i2c_channels.keys())[0])
+apds = APDS9960(i2c_bus)
+last_mode = {channel: None for channel in i2c_channels.keys()}
+
+
 def get_ground(sensor):
     return get_dist(sensor, drive=3)
 
