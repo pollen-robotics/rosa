@@ -59,19 +59,14 @@ def motor_short_brake(motor):
 #################################
 
 i2c_channels = {
-    'GU2': 0x01,
-    'GU3': 0x02,
-    'GU4': 0x04,
-    'GU5': 0x08,
-    'FU1': 0x10,
-    'FU2': 0x20,
-    'FU3': 0x40,
+    'ground-front-right': 0x01,
+    'ground-front-left': 0x02,
+    'ground-rear-left': 0x04,
+    'ground-rear-right': 0x08,
+    'front-right': 0x10,
+    'front-center': 0x20,
+    'front-left': 0x40,
 }
-
-mux_address = 0x70
-i2c_bus = smbus.SMBus(1)
-apds = APDS9960(i2c_bus)
-last_mode = {channel: None for channel in i2c_channels.keys()}
 
 
 def set_i2c_channel(channel):
