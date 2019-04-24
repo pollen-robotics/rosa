@@ -82,7 +82,7 @@ def set_i2c_channel(channel):
 
 
 def get_ground(sensor):
-    return get_dist(sensor) > ground_threshold
+    return get_dist(sensor, drive=3)
 
 
 def get_color(sensor):
@@ -101,11 +101,14 @@ def get_color(sensor):
     return (red, green, blue, ambient)
 
 
-def get_dist(sensor):
+def get_dist(sensor, gain=0, drive=0):
     set_i2c_channel(sensor)
 
     apds = APDS9960(i2c_bus)
     apds.enableProximitySensor()
+
+    apds.setProximityGain(gain)
+    apds.setLEDDrive(drive)
 
     time.sleep(0.01)
 
