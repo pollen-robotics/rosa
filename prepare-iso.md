@@ -12,15 +12,10 @@ You will also find a minimal Python API to control the robot with a follow line 
 4. Enable camera (via raspi-config)
 5. Update distrib ```sudo apt update```
 6. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
-7. Install pip for python3
-```
-wget https://bootstrap.pypa.io/get-pip.py
-sudo python3 get-pip.py
-```
 7. Install numpy
 ```
 sudo apt install libatlas3-base
-sudo pip3 install numpy -i https://www.piwheels.org/simple
+pip3 install numpy -i https://www.piwheels.org/simple
 ```
 8. Install opencv for python 3
 ```
@@ -36,10 +31,6 @@ make -j4
 Restore swap size in /etc/dphys-swapfile (CONF_SWAPSIZE=100) & sudo /etc/init.d/dphys-swapfile restart
 sudo make install
 sudo ldconfig
-```
-9. Install GPIO support for python
-```
-sudo apt install python3-gpiozero
 ```
 10. Install python dependencies
 ```
