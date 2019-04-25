@@ -1,6 +1,4 @@
 from .wheel import Wheel
-from .ground import Ground
-from .distance import Distance
 from .remote_io import RemoteIO
 from .remote_cam import Camera
 
@@ -11,15 +9,6 @@ class Rosa(object):
 
         self._left_wheel = Wheel(id='b', remote_io=self._io, inverse=True)
         self._right_wheel = Wheel(id='a', remote_io=self._io)
-
-        self._front_left_ground = Ground('front-left', remote_io=self._io)
-        self._front_right_ground = Ground('front-right', remote_io=self._io)
-        self._rear_left_ground = Ground('rear-left', remote_io=self._io)
-        self._rear_right_ground = Ground('rear-right', remote_io=self._io)
-
-        self._front_left_sensor = Distance('front-left', remote_io=self._io)
-        self._front_center_sensor = Distance('front-center', remote_io=self._io)
-        self._front_right_sensor = Distance('front-right', remote_io=self._io)
 
         self._cam = Camera(host)
 
@@ -34,36 +23,29 @@ class Rosa(object):
         return self._right_wheel
 
     @property
-    def front_left_ground(self):
-        return self._front_left_ground
-
-    @property
-    def front_right_ground(self):
-        return self._front_right_ground
-
-    @property
-    def rear_left_ground(self):
-        return self._rear_left_ground
-
-    @property
-    def rear_right_ground(self):
-        return self._rear_right_ground
-
-    @property
-    def front_left_sensor(self):
-        return self._front_left_sensor
-
-    @property
-    def front_center_sensor(self):
-        return self._front_center_sensor
-
-    @property
-    def front_right_sensor(self):
-        return self._front_right_sensor
-
-    @property
     def camera(self):
         return self._cam
+
+    @property
+    def front_distance_sensors(self):
+        return ['front-left', 'front-center', 'front-right']
+
+    @property
+    def ground_distance_sensors(self):
+        return [
+            'ground-front-left', 'ground-front-right',
+            'ground-rear-left', 'ground-rear-right',
+        ]
+
+    @property
+    def distance_sensors(self):
+        return self.front_distance_sensors + self.ground_distance_sensors
+
+    def get_distance(self, sensor):
+        if sensor not in self.distance_sensors:
+            raise ValueError('sensor should be one of {}!'.format(self.distance_sensors))
+
+        return self._io.last_state['distance'][sensor]
 
     def buzz(self, duration):
         self._io.buzz(duration)
