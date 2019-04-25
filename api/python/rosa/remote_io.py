@@ -1,7 +1,7 @@
 import json
 import websocket as ws
 
-from threading import Thread
+from threading import Thread, Event
 
 
 class RemoteIO(object):
@@ -14,6 +14,9 @@ class RemoteIO(object):
         self._poll_t = Thread(target=self._update_state)
         self._poll_t.daemon = True
         self._poll_t.start()
+
+        self._synced = Event()
+        self._synced.wait()
 
     def set_speed(self, motor, speed):
         self.ws.send(json.dumps({
@@ -28,3 +31,4 @@ class RemoteIO(object):
     def _update_state(self):
         while True:
             self.last_state.update(json.loads(self.ws.recv()))
+            self._synced.set()
