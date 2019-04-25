@@ -63,7 +63,7 @@ class Rosa(object):
         if sensor not in self.distance_sensors:
             raise ValueError('sensor should be one of {}!'.format(self.distance_sensors))
 
-        return self._io.last_state['distance'][sensor]
+        return 255 - self._io.last_state['distance'][sensor]
 
     def buzz(self, duration):
         self._io.buzz(duration)
