@@ -1,5 +1,6 @@
 import numpy as np
 
+from .led import LED
 from .wheel import Wheel
 from .remote_io import RemoteIO
 from .remote_cam import Camera
@@ -14,7 +15,8 @@ class Rosa(object):
 
         self._cam = Camera(host)
 
-        # TODO: add front leds
+        self._left_led = LED(side='left', remote_io=self._io)
+        self._right_led = LED(side='right', remote_io=self._io)
 
     @property
     def left_wheel(self):
@@ -23,6 +25,14 @@ class Rosa(object):
     @property
     def right_wheel(self):
         return self._right_wheel
+
+    @property
+    def left_led(self):
+        return self._left_led
+
+    @property
+    def right_led(self):
+        return self._right_led
 
     @property
     def camera(self):

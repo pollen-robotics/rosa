@@ -87,6 +87,12 @@ class WsIOHandler(WebSocket):
                     if verbose:
                         print('Set motor {} speed to {}'.format(m, s))
 
+        if 'leds' in cmd:
+            leds = cmd['leds']
+            for side, led_id in (('left', 1), ('right', 2)):
+                if side in leds:
+                    io.led_on(led_id) if leds[side] else io.led_off(led_id)
+
         if 'buzz' in cmd:
             duration = cmd['buzz']
             io.buzz(duration)

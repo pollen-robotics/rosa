@@ -25,6 +25,13 @@ class RemoteIO(object):
             }
         }))
 
+    def set_led(self, led, val):
+        self.ws.send(json.dumps({
+            'leds': {
+                led: val
+            }
+        }))
+
     def buzz(self, duration):
         self.ws.send(json.dumps({'buzz': duration}))
 
