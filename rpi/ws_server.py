@@ -25,33 +25,29 @@ class WsIOHandler(WebSocket):
 
     def handleConnected(self):
         self._send_loop_running = True
-        self._last_state = next(self._state_getter)
 
         def _send_loop():
-            self._state_getter = self.stateGetter()
+            state_getter = self.stateGetter()
+            last_state = next(state_getter)
 
             while self._send_loop_running:
-                self.sendState()
+                state = next(state_getter)
+                if use_cam[0]:
+                    state['line-center'] = line_center[0]
+
+                last_state.update(state)
+
+                # TODO: qu'est-ce qui declenche l'envoie du state ?
+                #
+                # Timer ?
+                # REQ/REP ?
+                #
+                # Problematique : eviter les lags/buffer overflow en cas de latence reseau
+                self.sendMessage(json.dumps(last_state))
                 time.sleep(WsIOHandler.pub_period)
 
         self._sender = Thread(target=_send_loop)
         self._sender.start()
-
-    # TODO: qu'est-ce qui declenche l'envoie du state ?
-    #
-    # Timer ?
-    # REQ/REP ?
-    #
-    # Problematique : eviter les lags/buffer overflow en cas de latence reseau
-    def sendState(self):
-        state = next(self._state_getter)
-
-        if use_cam[0]:
-            state['line-center'] = line_center[0]
-
-        self._last_state.update(state)
-
-        self.sendMessage(json.dumps(self._last_state))
 
     def stateGetter(self):
         def _get(color):
