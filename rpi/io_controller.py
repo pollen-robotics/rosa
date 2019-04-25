@@ -85,10 +85,6 @@ apds = APDS9960(i2c_bus)
 last_mode = {channel: None for channel in i2c_channels.keys()}
 
 
-def get_ground(sensor):
-    return get_dist(sensor, drive=3)
-
-
 def get_color(sensor):
     set_i2c_channel(sensor)
 
@@ -105,14 +101,14 @@ def get_color(sensor):
     return (red, green, blue, ambient)
 
 
-def get_dist(sensor, gain=0, drive=0):
+def get_dist(sensor):
     set_i2c_channel(sensor)
 
     if last_mode[sensor] != 'proximity':
         apds.enableProximitySensor()
 
-        apds.setProximityGain(gain)
-        apds.setLEDDrive(drive)
+        apds.setProximityGain(0)
+        apds.setLEDDrive(0 if sensor.startswith('front') else 3)
         last_mode[sensor] = 'proximity'
 
     return apds.readProximity()
