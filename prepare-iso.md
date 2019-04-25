@@ -22,7 +22,7 @@ pip3 install numpy -i https://www.piwheels.org/simple
 wget https://github.com/opencv/opencv/archive/3.4.3.tar.gz
 tar xvfz 3.4.3.tar.gz
 cd opencv-3.4.3
-sudo apt install build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libatlas-base-dev gfortran python3-dev
+sudo apt install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libatlas-base-dev gfortran python3-dev
 mkdir build
 cd build
 cmake -D BUILD_EXAMPLES=OFF -D BUILD_DOCS=OFF -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF ..
@@ -35,8 +35,8 @@ sudo ldconfig
 10. Install python dependencies
 ```
 sudo apt install git
-sudo pip3 install git+https://github.com/dpallot/simple-websocket-server.git
-sudo pip3 install ipython Pillow websocket-client
+pip3 install git+https://github.com/dpallot/simple-websocket-server.git
+pip3 install ipython Pillow websocket-client
 ```
 11. Download and install scripts
 ```
