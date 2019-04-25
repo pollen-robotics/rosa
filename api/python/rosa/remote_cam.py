@@ -14,9 +14,13 @@ class Camera(object):
         self._ws = ws.create_connection(url)
         self._buff = deque([], 1)
 
-        self.video_loop_t = Thread(target=self._video_grab)
-        self.video_loop_t.daemon = True
-        self.video_loop_t.start()
+        self._video_loop_t = Thread(target=self._video_grab)
+        self._video_loop_t.daemon = True
+        self._video_loop_t.start()
+
+    def __repr__(self):
+        h, w, _ = self.last_frame.shape
+        return 'Camera(resolution="{}x{}")'.format(w, h)
 
     @property
     def last_frame(self):

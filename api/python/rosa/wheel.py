@@ -1,10 +1,14 @@
 class Wheel(object):
-    def __init__(self, id, remote_io, inverse=False, init_speed=0.0):
+    def __init__(self, id, side, remote_io, inverse=False, init_speed=0.0):
         self.id = id
+        self._side = side
         self._io = remote_io
 
         self._speed = init_speed
         self._inverse = inverse
+
+    def __repr__(self):
+        return 'Wheel(side="{}", speed={})'.format(self._side, self.speed)
 
     @property
     def speed(self):

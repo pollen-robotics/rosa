@@ -56,28 +56,53 @@ For a more complete example, you can check:
 
 * [simple demo movements](./examples/move.py)
 
-### Distance and color sensor
+### Distance sensors
 
-The robot is equipped with three distance and color sensor in the front (left, center and right). Their values can be accessed directly like this.
+The robot is equipped with three distance sensors in the front (left, center and right). Their values can be accessed directly like this.
 
 ```
 # To retrieve the distance from the front left sensor:
-print(rosa.front_left_sensor.distance)
+print(rosa.get_distance('front-left'))
 
-# To get the color from the front center sensor:
-print(rosa.front_center_sensor.color)
+# To get all three distances (left, center, right)
+print(rosa.get_front_distances())
 ```
+
+The return values are given within range (0, 255) where 0 means real closes and 255 means far away. The value are updated at about 50Hz.
+
+*Note: these values are really sensitive to light conditions (IR) and you may have to calibrate your threshold depending on your work environment.*
 
 ### Ground sensors
 
 There is also four ground sensors under the robot (at each corner). They can be accessed to check whether the sensor is detecting the ground or not.
 
 ```
-if rosa.front_left_ground.is_ground():
+# To retrieve the distance from the ground front left sensor:
+print(rosa.get_distance('ground-front-left'))
+
+# To check if there is ground:
+if rosa.get_distance('ground-front-right') > 250:
     print('keep navigating.')
 else:
     print('Warning: no ground detected!')
+
+# To get all four ground distances (front left, front right, rear left, rear right)
+print(rosa.get_ground_distances())
 ```
+
+*Note: these values are really sensitive to light conditions (IR) and you may have to calibrate your threshold depending on your work environment.*
+
+You can also look at the [exploration behavior](./examples/exploration.py) for more examples on how to retrieve all ground and front sensors and check their values to detect obstacles or void.
+
+### Color sensor
+
+You can also retrieve the color from the front center sensor, more specifically the red, green, blue and ambient channels.
+
+```
+print(rosa.get_color())
+```
+
+*Note: this sensor is slow and is actually only updated every 1-2Hz. The object also need to be very close to the sensor (about 1cm) for the color detection to be accurate.*
 
 ### Other interactions
 
@@ -93,7 +118,7 @@ and turn on/off the two front leds:
 ```
 import time
 
-for _ in range(10):
+for _ in range(5):
     rosa.left_led.on()
     rosa.right_led.off()
     time.sleep(1)

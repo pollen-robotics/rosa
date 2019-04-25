@@ -5,6 +5,12 @@ class LED(object):
 
         self._on = False
 
+    def __repr__(self):
+        return 'LED(side="{}", status="{}")'.format(
+            self._side,
+            'on' if self.is_on() else 'off'
+        )
+
     def is_on(self):
         return self._on
 

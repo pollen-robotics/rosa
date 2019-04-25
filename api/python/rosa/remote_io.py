@@ -37,6 +37,10 @@ class RemoteIO(object):
         self._synced = Event()
         self._synced.wait()
 
+    @property
+    def connected(self):
+        return self._push_t.is_alive() and self._poll_t.is_alive() and self._synced.is_set()
+
     def push_cmd(self, cmd):
         with self._cmd_lock:
             update_cmd(self._cmd, cmd)

@@ -17,7 +17,7 @@ Ce projet est entièrement open-source et s'appuie sur des composants Makers et 
 
 Le logiciel embarqué du robot est disponible sous forme ISO prête à flasher sur une carte SD (8Go minimum). Cette ISO est disponible [ici](TODO). Ce logiciel est responsable de piloter les moteurs en fonction des commandes reçues ainsi que d'envoyer les informations des différents capteurs.
 
-Pour plus d'information pour écrire cette image on pourra se référer, par exemple, au site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
+Pour plus d'information sur comment écrire cette image on pourra se référer, par exemple, au site de Raspberry Pi [à cette adresse](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
 
 Une fois la carte écrite avec l'image téléchargée, elle peut être insérée dans la carte Raspberry Pi de Rosa.
 
@@ -27,7 +27,7 @@ Afin de simplifier la première connexion au réseau WiFi, il est possible de le
 
 ### Connecter Rosa au réseau
 
-Afin de pouvoir programmer le robot, il est nécessaire de le connecter au même réseau que son ordinateur ou sa tablette. Il peut se connecter au WiFi ou en Ethernet via USB.
+Afin de pouvoir programmer le robot, il est nécessaire de le connecter au même réseau que son ordinateur ou sa tablette. Il peut se connecter au WiFi ou en Ethernet via un adaptateur USB.
 
 #### WiFi
 
@@ -35,7 +35,7 @@ La carte Raspberry-Pi utilisée par le robot permet de se connecter à un résea
 
 Si vous avez facilement accès à la carte, il est possible de brancher un clavier (en USB) et un écran (en HDMI) sur la carte et d'utiliser l'interface graphique de Raspberry-Pi pour configurer un réseau WiFi. Ce réseau sera conservé et le robot utilisera automatiquement ce réseau.
 
-Il est également possible de venir rajouter un fichier spécial directement sur la partition BOOT de la carte SD. Par exemple, si on souhaite se connecter automatiquement au réseau WiFI "mon-reseau-wifi" avec comme mot de passe "password" il faut ajouter le fichier wpa_supplicant.conf suivant :
+Il est également possible de venir rajouter un fichier spécial directement sur la partition BOOT de la carte SD. Par exemple, si on souhaite se connecter automatiquement au réseau WiFI "mon-reseau-wifi" avec comme mot de passe "password" il faut ajouter le fichier *wpa_supplicant.conf* suivant :
 
 ```
 country=fr
@@ -78,11 +78,13 @@ Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent to
 
 Le robot possède plusieurs capteurs de distance (utilisant un émetteur/récepteur infra-rouge). Ces capteurs sont situés à l'avant du robot ainsi que sous le robot.
 
-Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de **TODO: fourchette**. Ils permettent de mesurer la distance ainsi que la couleur. 3 capteurs sont positionnés :
+Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'obstacles ou suivre un objet. Ils détectent un objet situé à une distance de 5 à 15cm. Ils permettent de mesurer la distance. Les capteurs sont positionnés :
 
 - à l'avant gauche
 - à l'avant centre
 - et à l'avant droite.
+
+À noter que le capteur central peut également être utilisé pour mesure la couleur d'un objet positionné juste devant.
 
 Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un bord de table. Ils peuvent également servir à détecter une ligne noire si elle est suffisament large (~ la largeur du robot). Il y a 4 capteurs de bord de table situés à chacun des coins du robot.
 
