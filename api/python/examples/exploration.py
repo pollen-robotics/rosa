@@ -20,11 +20,8 @@ if __name__ == '__main__':
     rosa = Rosa('rosa.local')
 
     while True:
-        dist = np.array([rosa.get_distance(s) for s in rosa.front_distance_sensors])
-        obstacle_detected = np.any(dist > 200)
-
-        ground = np.array([rosa.get_distance(s) for s in rosa.ground_distance_sensors])
-        void_detected = np.any(ground < 100)
+        obstacle_detected = np.any(rosa.get_front_distances() > 200)
+        void_detected = np.any(rosa.get_ground_distances() < 100)
 
         if obstacle_detected or void_detected:
             rosa.left_wheel.speed = np.random.rand() - 0.5  # random value within [-1/2, 1/2]

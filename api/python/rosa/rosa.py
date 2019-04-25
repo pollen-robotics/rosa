@@ -1,3 +1,5 @@
+import numpy as np
+
 from .wheel import Wheel
 from .remote_io import RemoteIO
 from .remote_cam import Camera
@@ -30,12 +32,18 @@ class Rosa(object):
     def front_distance_sensors(self):
         return ['front-left', 'front-center', 'front-right']
 
+    def get_front_distances(self):
+        return np.array([self.get_distance(name) for name in self.front_distance_sensors])
+
     @property
     def ground_distance_sensors(self):
         return [
             'ground-front-left', 'ground-front-right',
             'ground-rear-left', 'ground-rear-right',
         ]
+
+    def get_ground_distances(self):
+        return np.array([self.get_distance(name) for name in self.ground_distance_sensors])
 
     @property
     def distance_sensors(self):
