@@ -15,8 +15,8 @@ class Rosa(object):
         self._io = RemoteIO(host)
         self._host = host
 
-        self._left_wheel = Wheel(id='b', side='left', remote_io=self._io, inverse=True)
-        self._right_wheel = Wheel(id='a', side='right', remote_io=self._io)
+        self._left_wheel = Wheel(id='b', side='left', remote_io=self._io)
+        self._right_wheel = Wheel(id='a', side='right', remote_io=self._io, inverse=True)
 
         self._cam = Camera(host)
 

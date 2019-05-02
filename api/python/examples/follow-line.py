@@ -6,20 +6,20 @@ from rosa import Rosa
 from rosa.vision import get_line_center
 
 
-def look_around(rosa, speed=0.25):
+def look_around(rosa, speed=0.15):
     rosa.left_wheel.speed = speed
     rosa.right_wheel.speed = -speed
 
 
-def follow_line(rosa, center, gain=0.4, img_width=640):
+def follow_line(rosa, center, gain=0.3, img_width=640):
     dx, _ = center
     dx = ((dx / img_width) - 0.5) * 2
 
     ls = gain * (0.5 * dx + 0.5)
     rs = gain * (0.5 * -dx + 0.5)
 
-    rosa.left_wheel.speed = ls
-    rosa.right_wheel.speed = rs
+    rosa.left_wheel.speed = rs
+    rosa.right_wheel.speed = ls
 
 
 if __name__ == '__main__':
