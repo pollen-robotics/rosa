@@ -129,7 +129,7 @@ def buzz(duration):
 # Leds utility #
 ################
 
-leds = [gpio.LED(5), gpio.LED(6)]
+leds = [gpio.LED(5), gpio.LED(12), gpio.LED(6)]
 
 
 def led_on(led_id):

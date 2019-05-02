@@ -21,6 +21,7 @@ class Rosa(object):
         self._cam = Camera(host)
 
         self._left_led = LED(side='left', remote_io=self._io)
+        self._front_led = LED(side='center', remote_io=self._io)
         self._right_led = LED(side='right', remote_io=self._io)
 
     def __repr__(self):
@@ -37,6 +38,10 @@ class Rosa(object):
     @property
     def left_led(self):
         return self._left_led
+
+    @property
+    def front_led(self):
+        return self._front_led
 
     @property
     def right_led(self):

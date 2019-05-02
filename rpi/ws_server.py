@@ -89,7 +89,7 @@ class WsIOHandler(WebSocket):
 
         if 'leds' in cmd:
             leds = cmd['leds']
-            for side, led_id in (('left', 2), ('right', 1)):
+            for side, led_id in (('left', 3), ('center', 2), ('right', 1)):
                 if side in leds:
                     io.led_on(led_id) if leds[side] else io.led_off(led_id)
 
