@@ -89,7 +89,8 @@ def get_color(sensor):
     set_i2c_channel(sensor)
 
     if last_mode[sensor] != 'color':
-        apds.enableLightSensor()
+        local_apds = APDS9960(i2c_bus)
+        local_apds.enableLightSensor()
         time.sleep(0.110)  # default ATIME is 103ms
         last_mode[sensor] = 'color'
 
@@ -105,11 +106,12 @@ def get_dist(sensor):
     set_i2c_channel(sensor)
 
     if last_mode[sensor] != 'proximity':
-        apds.enableProximitySensor()
-
-        apds.setProximityGain(0)
-        apds.setLEDDrive(0 if sensor.startswith('front') else 3)
+        local_apds = APDS9960(i2c_bus)
+        local_apds.enableProximitySensor()
+        local_apds.setProximityGain(0)
+        local_apds.setLEDDrive(0 if sensor.startswith('front') else 3)
         last_mode[sensor] = 'proximity'
+        time.sleep(0.01)
 
     return apds.readProximity()
 
