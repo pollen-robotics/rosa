@@ -14,7 +14,7 @@ You will also find a minimal Python API to control the robot with a follow line 
 6. Add v4l2 driver for the cam ```echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf```
 7. Install numpy
 ```
-sudo apt install libatlas3-base
+sudo apt install -y libatlas3-base python3-pip
 pip3 install numpy -i https://www.piwheels.org/simple
 ```
 8. Install opencv for python 3

@@ -84,7 +84,7 @@ Ceux situés à l'avant peuvent être utilisés pour faire de la détection d'ob
 - à l'avant centre
 - et à l'avant droite.
 
-À noter que le capteur central peut également être utilisé pour mesure la couleur d'un objet positionné juste devant.
+À noter que le capteur central peut également être utilisé pour mesurer la couleur d'un objet positionné juste devant.
 
 Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un bord de table. Ils peuvent également servir à détecter une ligne noire si elle est suffisament large (~ la largeur du robot). Il y a 4 capteurs de bord de table situés à chacun des coins du robot.
 
