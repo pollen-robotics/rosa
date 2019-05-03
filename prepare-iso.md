@@ -34,7 +34,7 @@ sudo ldconfig
 ```
 10. Install python dependencies
 ```
-sudo apt install git
+sudo apt install -y git
 pip3 install git+https://github.com/dpallot/simple-websocket-server.git
 pip3 install ipython Pillow websocket-client
 ```
@@ -46,22 +46,24 @@ cd rosa-rpi/rpi
 ```
 12. Launch video stream as service (run from rpi folder)
 ```
-sudo tee /etc/systemd/system/videostream.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/ioservice.service > /dev/null <<EOF
 [Unit]
-Description=Video Stream to WS
+Description=IO Stream to WS
 Wants=network-online.target
 After=network.target network-online.target
 [Service]
-PIDFile=/var/run/videostream.pid
+PIDFile=/var/run/iostream.pid
 Environment="PATH=$PATH"
-ExecStart=/usr/bin/python3 "$PWD/streamjpeg.py"
+ExecStart=/usr/bin/python3 "$PWD/ws_server.py"
 User=pi
 Group=pi
 Type=simple
 [Install]
 WantedBy=multi-user.target
 EOF
-sudo systemctl enable videostream.service
+sudo systemctl enable ioservice.service
 ```
-13. **TODO** add remote motor controller server as service
-14. Reboot
+13. Enable i2c in raspi-config
+14. Install smbus ```sudo apt install -y python3-smbus python3-gpiozero```
+15. Install apds9960 ```pip3 install apds9960```
+16. Reboot
