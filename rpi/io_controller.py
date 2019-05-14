@@ -32,7 +32,7 @@ def get_motor_pins(motor):
 
 
 def set_motor_speed(motor, speed):
-    speed = np.clip(speed, -1, 1)
+    speed = np.clip(speed, -0.5, 0.5)
 
     motor_pins['STBY'].on()
 
