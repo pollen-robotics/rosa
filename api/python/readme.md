@@ -6,13 +6,7 @@ The full API is described below. You can also find various examples illustrating
 
 ## Getting started
 
-The Python package to control Rosa can be installed via:
-
-```
-pip install rosa
-```
-
-Or directly from the source of this repository.
+The Python package to control Rosa can be installed via the source of this repository.
 
 It is compatible with Python versions 2.7 or >= 3.4. It uses a websocket library to communicate with the robot and numpy, opencv and keras for the computer vision.
 
