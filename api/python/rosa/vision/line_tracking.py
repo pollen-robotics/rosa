@@ -2,7 +2,7 @@ import cv2 as cv
 
 
 def get_line_center(img,
-                    band_center_y=300,
+                    band_center_y=365,
                     band_height=50, band_width_ratio=0.75,
                     vmax=75,
                     render=False):
