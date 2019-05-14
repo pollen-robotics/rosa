@@ -39,7 +39,7 @@ class VisionTestCase(unittest.TestCase):
         center = get_line_center(self.obj_img)
         self.assertIsNone(center)
         center = get_line_center(self.no_obj_img)
-        self.assertIsNone(center)
+        self.assertEqual(center, (401, 312))
 
     def test_obj_detector(self):
         obj = detect_objects(self.random_img)
