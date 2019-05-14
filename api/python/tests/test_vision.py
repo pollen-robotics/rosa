@@ -35,7 +35,7 @@ class VisionTestCase(unittest.TestCase):
         self.assertTrue(center is None or len(center) == 2)
 
         center = get_line_center(self.line_img)
-        self.assertEqual(center, (250, 355))
+        self.assertEqual(center, (250, 325))
         center = get_line_center(self.obj_img)
         self.assertIsNone(center)
         center = get_line_center(self.no_obj_img)
