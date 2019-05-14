@@ -20,10 +20,13 @@ Chacun des blocs spécifiques à l'extension pour le robot sont décrits ci-dess
 * mesurer la distance d'un obstacle face au capteur de devant
 
 **TODO: img**
-* mesurer la couleur d'un obstacle face au capteur de devant
+* mesurer la couleur d'un obstacle
 
 **TODO: img**
 * déclencher un son de buzzer sur le robot pendant la durée (en secondes) spécifiée
+
+**TODO: img**
+* allumer/éteindre une des trois LEDs à l'avant du robot
 
 **TODO: img**
 * Est-ce qu'une ligne noire est détectée ?
