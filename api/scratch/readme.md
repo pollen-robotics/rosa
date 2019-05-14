@@ -10,26 +10,35 @@ Chacun des blocs spécifiques à l'extension pour le robot sont décrits ci-dess
 
 ## Description des blocs de l'extension
 
-**TODO: img**
 * changer la vitesse des moteurs
 
-**TODO: img**
+![alt text](./imgs/motor-speed.png "Set motor speed")
+
 * est-ce que le capteur de dessous détecte le sol ?
 
-**TODO: img**
+![alt text](./imgs/ground-detected.png "Ground detected?")
+
 * mesurer la distance d'un obstacle face au capteur de devant
 
-**TODO: img**
+![alt text](./imgs/distance-sensor.png "Get distance")
+
 * mesurer la couleur d'un obstacle
 
-**TODO: img**
+![alt text](./imgs/get-color.png "Get color")
+
 * déclencher un son de buzzer sur le robot pendant la durée (en secondes) spécifiée
 
-**TODO: img**
+![alt text](./imgs/buzz.png "Buzz for a duration.")
+
 * allumer/éteindre une des trois LEDs à l'avant du robot
 
-**TODO: img**
+![alt text](./imgs/led-on.png "Turn led on")
+![alt text](./imgs/led-off.png "Turn led off")
+
 * Est-ce qu'une ligne noire est détectée ?
 
-**TODO: img**
+![alt text](./imgs/line-detected.png "Line detected?")
+
 * mesurer l'abscisse de la ligne noire dans le repère de l'image
+
+![alt text](./imgs/line-center.png "Line center")
