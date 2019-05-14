@@ -13,8 +13,8 @@ def look_around(rosa, speed=0.15):
 
 def follow_cube(rosa, center, gain=0.25):
     dx, _ = center
-    ls = gain * (0.5 * dx + 0.5)
-    rs = gain * (0.5 * -dx + 0.5)
+    ls = gain * (0.4 * dx + 0.6)
+    rs = gain * (0.4 * -dx + 0.6)
 
     rosa.left_wheel.speed = ls
     rosa.right_wheel.speed = rs
@@ -24,8 +24,8 @@ def follow_line(rosa, center, gain=0.25, img_width=640):
     dx, _ = center
     dx = ((dx / img_width) - 0.5) * 2
 
-    ls = gain * (0.3 * dx + 0.7)
-    rs = gain * (0.3 * -dx + 0.7)
+    ls = gain * (0.5 * dx + 0.5)
+    rs = gain * (0.5 * -dx + 0.5)
 
     rosa.left_wheel.speed = ls
     rosa.right_wheel.speed = rs

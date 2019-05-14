@@ -6,7 +6,7 @@ from rosa import Rosa
 from rosa.vision import detect_objects
 
 
-def look_around(rosa, speed=0.25):
+def look_around(rosa, speed=0.2):
     rosa.left_wheel.speed = speed
     rosa.right_wheel.speed = 0
 
