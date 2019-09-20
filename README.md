@@ -6,12 +6,38 @@ Le robot Rosa a été conçu dans le cadre d'une mission de [Poppy station](http
 
 Ce projet est entièrement open-source et s'appuie sur des composants Makers et DIY. Il a été conçu pour être facilement assemblable et personalisable. Il vise à être construit et distribué par les réseaux de distribution de la ligue pour l'Enseignement.
 
-**TODO: video**
+[![Video](http://i3.ytimg.com/vi/BjSzU6EHspg/hqdefault.jpg)](https://www.youtube.com/watch?v=BjSzU6EHspg)
 
 ## Guide de démarrage
 
-### Les différents modèles 3D et composants
-### Assemblage
+### Modèles 3D
+
+La CAO mécanique est faite avec OnShape et est disponible dans le [workspace Rosa](https://cad.onshape.com/documents/35ce243fe860772b30e007b8/w/907a682bb2447d12f8562319/e/38b8be09478438249969e7f1).
+
+[![Onshape Rosa](img/onshape.png)](https://cad.onshape.com/documents/35ce243fe860772b30e007b8/w/907a682bb2447d12f8562319/e/38b8be09478438249969e7f1)
+
+Les exports STL pour l'impressions sont disponibles dans les [releases](https://github.com/pollen-robotics/rosa/releases).
+
+### Liste du materiel
+
+| Nom                                                | Reference | Quantitée | Coût estimé| lien                                                                                                  |
+|-----------------------------------------------------|------------|----------|----------------|-------------------------------------------------------------------------------------------------------|
+| FeeTech 130 DC motor gear box                       | FT-DC-130D | 2        | US$0.72        | http://www.feetechrc.com/                                                                             |
+| FeeTech Wheel for DC Motor gear box                 | FT-DC-W    | 2        | US$0.73        | http://www.feetechrc.com/                                                                             |
+| Raspberry Pi 3 - Model A+                           |            | 1        | 20€            | https://fr.rs-online.com/web/p/products/8332699/                                                      |
+| Raspberry Pi Camera Board - Fisheye 160° Lens (5MP) |            | 1        | 7-25€          | https://fr.aliexpress.com/item/32963289790.html                                                       |
+| SD card 16Go                                        |            | 1        | 4€             | https://www.amazon.fr/NMicro-m%C3%A9moire-MicroSD-microSDHC-adaptateur/dp/B00N5TM8TY/ref=sr_1_1_sspa? |
+| ZIPPY Compact 850mAh 2S 25C Lipo                    |ZC.850.2S.25| 1        | 5€             | https://hobbyking.com/fr_fr/zippy-compact-850mah-2s-25c-lipo-pack.html |
+| Koncepto Custom Board                               |            | 1        | 57.5             |                                                                                                       |
+| Vis [todo]                                          |            |          |                |                                                                                                       |
+
+### Electronique
+
+La conception électronique a été réalisée par [Koncepto](https://koncepto.io/). Les sources des cartes permettant leur production sont disponibles dans les [releases](https://github.com/pollen-robotics/rosa/releases).
+
+![Koncepto board top view](img/top_view.png)
+
+![Koncepto board bottom view](img/bottom_view.png)
 
 ### Préparer la carte SD
 
@@ -24,6 +50,8 @@ Une fois la carte écrite avec l'image téléchargée, elle peut être insérée
 Afin de simplifier la première connexion au réseau WiFi, il est possible de le paramétrer directement sur la carte SD que l'on vient d'écrire. Il peut donc être plus pratique de réaliser cette étape avant d'insérer dans le robot (voir section [Connecter au réseau WiFi](#wifi) pour plus d'informations).
 
 ### Alimentation
+
+Nous conseillons d'alimenter Rosa avec cette batterie: [Zippy Compact 800mAh 2S](https://hobbyking.com/fr_fr/zippy-compact-800mah-2s1p-20c.html). Elle peut être rechargé via un chargeur LiPo comme celui ci: [HobbyKing B3AC Compact Chargeur](https://hobbyking.com/fr_fr/hobbykingr-b3ac-compact-charger-eu-plug.html).
 
 ### Connecter Rosa au réseau
 
