@@ -40,7 +40,7 @@ pip3 install ipython Pillow websocket-client
 ```
 11. Download and install scripts
 ```
-wget https://github.com/pollen-robotics/rosa/archive/rpi.zip
+wget https://github.com/pollen-robotics/rosa/archive/master.zip
 unzip rpi.zip
 cd rosa-rpi/rpi
 ```
