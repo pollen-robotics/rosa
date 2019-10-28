@@ -100,7 +100,7 @@ Le robot a été conçu pour pouvoir être utilisé dans différentes activités
 
 ### Navigation
 
-Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent tourner vers l'avant, vers l'arrière et s'arrêter. Le robot est donc capable de se déplacer dans un plan et de tourner sur lui même. La vitesse de déplacement du robot est réglable (**TODO: fourchette**).
+Le robot possède deux roues actionnées chacune par un moteur. Elles peuvent tourner vers l'avant, vers l'arrière et s'arrêter. Le robot est donc capable de se déplacer dans un plan et de tourner sur lui même. La vitesse de déplacement du robot est réglable.
 
 ### Détection d'obstacles
 
@@ -120,17 +120,13 @@ Ceux situés sous le robot sont utilisés pour détecter le vide, par exemple un
 
 Le robot peut également suivre une ligne noire. La caméra est utilisée pour la détecter et identifier sa position verticale à une distance du robot donnée.
 
-**TODO: vidéo et images**
-
 ### Détection et reconnaissance d'objet
 
 Le robot peut également détecter et reconnaître certains objets placés devant lui. Cette capacité permet la création d'activités autour de la collecte, du convoyage et du tri d'objets.
 
-Les objets de couleur reconnus par le robot sont un cube, une étoile et une boule. Le modèle 3D de ces objets est disponible [ici](**TODO**) et ils sont facilement imprimables sur une imprimante 3D du commerce.
+Les objets de couleur reconnus par le robot sont un cube, une étoile et une boule. Le modèle 3D de ces objets est disponible [ici](https://github.com/pollen-robotics/rosa/releases) et ils sont facilement imprimables sur une imprimante 3D du commerce.
 
 La caméra du robot est utilisée pour reconnaître et détecter ses objets. Le robot renvoie une liste de l'ensemble des objets présents à l'image (il n'y a pas de limite maximale) avec pour chacun des objets son type (cube, étoile ou boule) et sa position dans l'image (la boite englobante).
-
-**TODO: video + image**
 
 *Note: il est possible, bien que plus compliqué, d'entrainer le robot à reconnaître de nouveaux objets si l'on souhaite.*
 
