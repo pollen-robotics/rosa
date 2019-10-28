@@ -41,8 +41,8 @@ pip3 install ipython Pillow websocket-client
 11. Download and install scripts
 ```
 wget https://github.com/pollen-robotics/rosa/archive/master.zip
-unzip rpi.zip
-cd rosa-rpi/rpi
+unzip master.zip
+cd rosa-master/rpi
 ```
 12. Launch video stream as service (run from rpi folder)
 ```
