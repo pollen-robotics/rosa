@@ -61,7 +61,7 @@ Afin de pouvoir programmer le robot, il est nécessaire de le connecter au même
 
 La carte Raspberry-Pi utilisée par le robot permet de se connecter à un réseau WiFi. Il est donc possible de la configurer comme n'importe quelle carte Raspberry-Pi.
 
-Si vous avez facilement accès à la carte, il est possible de brancher un clavier (en USB) et un écran (en HDMI) sur la carte et d'utiliser l'interface graphique de Raspberry-Pi pour configurer un réseau WiFi. Ce réseau sera conservé et le robot utilisera automatiquement ce réseau.
+Si vous avez facilement accès à la carte, il est possible de brancher un clavier (en USB) et un écran (en HDMI) sur la carte et d'utiliser l'interface de Raspberry-Pi pour configurer un réseau WiFi. Ce réseau sera conservé et le robot utilisera automatiquement ce réseau.
 
 Il est également possible de venir rajouter un fichier spécial directement sur la partition BOOT de la carte SD. Par exemple, si on souhaite se connecter automatiquement au réseau WiFI "mon-reseau-wifi" avec comme mot de passe "password" il faut ajouter le fichier *wpa_supplicant.conf* suivant :
 
