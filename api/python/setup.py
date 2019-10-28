@@ -20,6 +20,6 @@ setup(name='rosa',
           'Pillow',
           'numpy',
           'keras',
-          'tensorflow',  # can be replaced by tensorflow-gpu
+          'tensorflow<2',  # can be replaced by tensorflow-gpu
           'matplotlib',
       ])
